@@ -1,30 +1,24 @@
-import { Button, Card } from "@basmonje/quarks_ui";
+import { Container } from "@basmonje/quarks_ui";
+import Layout from "../layouts";
+import Hero from "../components/Hero";
+import Projects from "../components/ListProjects";
 
-export default function Home() {
+export default function HomePage() {
   return (
-    <div className="p-2">
-      <h1>Welcome</h1>
-
-      <div className="flex flex-column items-center content-center">
-        <Button type="gray" gradient="200" radius="medium">
-          Descargar
-        </Button>
-        <Button type="primary" gradient="200" radius="medium">
-          Descargar
-        </Button>
-        <Button type="danger" gradient="200" radius="medium">
-          Error
-        </Button>
-        <Button type="warning" gradient="200" radius="medium">
-          Precaución
-        </Button>
+    <Layout title="Home">
+      <Hero />
+      <Projects />
+      <div className="mt-6">
+        <Container size="small">
+          <div>Qie onda</div>
+        </Container>
       </div>
 
-      <div>
-        <Card type="gray" gradiant="400" radius="small">
-          <h1>Primer contenido</h1>
-        </Card>
+      <div className="flex flex-col">
+        <h1>que</h1>
+        <h1>que</h1>
+        <h1>que</h1>
       </div>
-    </div>
+    </Layout>
   );
 }
