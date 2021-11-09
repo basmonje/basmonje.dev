@@ -16,7 +16,7 @@ export interface ListProps {
 export default function ListDocs({ posts, page }: ListProps) {
   return (
     <Container size="small">
-      <div className="grid col-1 sm-col-2 md-col-3">
+      <div className="--grid --grid-col-1 --grid-xs-col-2">
         {posts &&
           posts.map((post, index) => (
             <Link href={`/${page}/${post.slug}`} key={index}>
@@ -24,11 +24,11 @@ export default function ListDocs({ posts, page }: ListProps) {
                 <Card
                   border="thin"
                   radius="small"
-                  className="p-2 flex flex-col content-between light:bg-gray-200"
+                  className="--p-2 --flex --flex-col --content-between"
                 >
-                  <span className="text-sm white">{post.title}</span>
+                  <span className="--text-sm">{post.title}</span>
                   <Scroller>
-                    <ul className="flex flex-row gap-1">
+                    <ul className="--flex --flex-row gap-1">
                       {post.tags &&
                         post.tags.map((tag, index) => (
                           <li key={index}>

@@ -44,14 +44,20 @@ const defaultPropsFooter = {
 };
 function Footer({ external, pages, utilities }: typeof defaultPropsFooter) {
   return (
-    <footer className="my-4">
+    <footer className="--border-top-xs --border-gray-5 --mb-5">
       <Container size="small">
-        <div className="grid col-1 sm-col-2 md-col-3">
+        <div className="--mt-5 --flex --flex-col --flex-sm-row --content-between">
           <FooterList list={pages} />
           <FooterList list={external} external />
           <FooterList list={utilities} />
         </div>
       </Container>
+
+      <div>
+        <Link href="#hero">
+          <a className="--td-text-gray-3">Ir a inicio</a>
+        </Link>
+      </div>
     </footer>
   );
 }
@@ -71,17 +77,22 @@ function FooterList({ list, external = false }: ListProps) {
       {list &&
         list.map((item, index) => (
           <ul key={index} className="flex flex-col gap-1">
-            <Anchor href={item.href}>{item.label}</Anchor>
+            <Anchor
+              href={item.href}
+              className="--td-text-gray-5 --td-text-hover-gray-2 --tw-text-gray-6 --tw-text-hover-gray-8"
+            >
+              {item.label}
+            </Anchor>
           </ul>
         ))}
     </div>
   );
 }
 
-function ExternalLink({ href, children }) {
+function ExternalLink({ href, children, className }) {
   return (
     <a
-      className="link link-white"
+      className={className}
       target="_blank"
       rel="noopener noreferrer"
       href={href}
@@ -91,10 +102,10 @@ function ExternalLink({ href, children }) {
   );
 }
 
-function InternalLink({ href, children }) {
+function InternalLink({ href, children, className }) {
   return (
     <Link href={href}>
-      <a className="link link-white">{children}</a>
+      <a className={className}>{children}</a>
     </Link>
   );
 }
