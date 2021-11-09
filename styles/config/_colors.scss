@@ -1,0 +1,49 @@
+.--bg {
+    @include generic($colors, background-color);
+
+    &-hover {
+        @include hover($colors, background-color);
+    }
+}
+
+.--text {
+    @include generic($colors, color);
+    @include generic($fontSizes, font-size);
+    @include generic($fontLineHeight, line-height);
+
+    &-hover {
+        @include hover($colors, color);
+    }
+}
+
+.dark {
+    .--td-bg {
+        @include generic($colors, background-color);
+
+        &-hover {
+            @include hover($colors, background-color);
+        }
+    }
+
+    .--td-text {
+        @include generic($colors, color);
+
+        &-hover {
+            @include hover($colors, color);
+        }
+    }
+}
+
+.light {
+    .--tw-bg {
+        @include generic($colors, background-color);
+    }
+
+    .--tw-text {
+        @include generic($colors, color);
+
+        &-hover {
+            @include hover($colors, color);
+        }
+    }
+}

@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul,
+li,
+ol {
+    list-style: none;
+}
+
+html {
+    font-family: "Red Hat Mono", monospace;
+    scroll-behavior: smooth;
+}

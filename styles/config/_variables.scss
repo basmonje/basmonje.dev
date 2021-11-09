@@ -1,0 +1,29 @@
+:root {
+    --bg-dark: #191919;
+    --bg-white: #fff;
+    --bg-gray-1: #fafafa;
+    --bg-gray-2: #eaeaea;
+    --bg-gray-3: #999999;
+    --bg-gray-4: #888888;
+    --bg-gray-5: #666666;
+    --bg-gray-6: #444444;
+    --bg-gray-7: #333333;
+    --bg-gray-8: #111111;
+    --bg-success: #0070f3;
+    --bg-error: #ee0000;
+    --bg-warning: #f5a623;
+    --dropdown-box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.02);
+    --dropdown-triangle-stroke: #fff;
+    --scroller-start: var(--bg-gray-7);
+    --scroller-end: rgba(255, 255, 255, 0);
+    --shadow-small: 0 5px 10px rgba(0, 0, 0, 0.12);
+    --shadow-medium: 0 8px 30px rgba(0, 0, 0, 0.12);
+    --shadow-large: 0 30px 60px rgba(0, 0, 0, 0.12);
+    --portal-opacity: 0.25;
+}
+
+$xs: 576px;
+$sm: 768px;
+$md: 960px;
+$lg: 1280px;
+$xl: 1900px;

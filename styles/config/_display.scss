@@ -1,0 +1,289 @@
+.--flex {
+    display: flex;
+
+    @include generic($flexDirection, flex-direction);
+    @include mediaQuery($flexDirection, flex-direction);
+}
+
+.--items {
+    @include generic($flexItems, align-items);
+    @include mediaQuery($flexItems, align-items);
+}
+
+.--content {
+    @include generic($flexContent, justify-content);
+    @include mediaQuery($flexContent, justify-content);
+}
+
+// Positions
+
+.--position {
+    @include generic($positions, position);
+    @include mediaQuery($positions, position);
+}
+
+.--top {
+    @include generic($sizesPx, top);
+    @include generic($sizesRem, top);
+}
+
+.--bottom {
+    @include generic($sizesPx, bottom);
+    @include generic($sizesRem, bottom);
+}
+
+.--left {
+    @include generic($sizesPx, left);
+    @include generic($sizesRem, left);
+}
+
+.--right {
+    @include generic($sizesPx, right);
+    @include generic($sizesRem, right);
+}
+
+// Grid
+
+.--grid {
+    display: grid;
+
+    &-col {
+        @include createTemplateGrid(grid-template-columns);
+    }
+
+    &-row {
+        @include createTemplateGrid(grid-template-rows);
+    }
+
+    &-span {
+        @include createSpanGrid(grid-column);
+    }
+
+    &-row-span {
+        @include createSpanGrid(grid-row);
+    }
+
+    @include breakpoint(xs) {
+        &-xs {
+            &-col {
+                @include createTemplateGrid(grid-template-columns);
+            }
+
+            &-row {
+                @include createTemplateGrid(grid-template-rows);
+            }
+
+            &-span {
+                @include createSpanGrid(grid-column);
+            }
+
+            &-row-span {
+                @include createSpanGrid(grid-row);
+            }
+        }
+    }
+
+    @include breakpoint(sm) {
+        &-sm {
+            &-col {
+                @include createTemplateGrid(grid-template-columns);
+            }
+
+            &-row {
+                @include createTemplateGrid(grid-template-rows);
+            }
+
+            &-span {
+                @include createSpanGrid(grid-column);
+            }
+
+            &-row-span {
+                @include createSpanGrid(grid-row);
+            }
+        }
+    }
+
+    @include breakpoint(md) {
+        &-md {
+            &-col {
+                @include createTemplateGrid(grid-template-columns);
+            }
+
+            &-row {
+                @include createTemplateGrid(grid-template-rows);
+            }
+
+            &-span {
+                @include createSpanGrid(grid-column);
+            }
+
+            &-row-span {
+                @include createSpanGrid(grid-row);
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        &-lg {
+            &-col {
+                @include createTemplateGrid(grid-template-columns);
+            }
+
+            &-row {
+                @include createTemplateGrid(grid-template-rows);
+            }
+
+            &-span {
+                @include createSpanGrid(grid-column);
+            }
+
+            &-row-span {
+                @include createSpanGrid(grid-row);
+            }
+        }
+    }
+
+    @include breakpoint(xl) {
+        &-xl {
+            &-col {
+                @include createTemplateGrid(grid-template-columns);
+            }
+
+            &-row {
+                @include createTemplateGrid(grid-template-rows);
+            }
+
+            &-span {
+                @include createSpanGrid(grid-column);
+            }
+
+            &-row-span {
+                @include createSpanGrid(grid-row);
+            }
+        }
+    }
+}
+
+.--gap {
+    @include generic($sizes, gap);
+}
+
+.--w {
+    @include createDimensions($width, width);
+}
+
+.--h {
+    @include createDimensions($height, height);
+}
+
+// $w-gutter: 24px !default;
+// $grid-columns: 12 !default;
+// $grid-gutter-width: $w-gutter !default;
+// $grid-breakpoints: (
+//     xs: 0,
+//     sm: 576px,
+//     md: 768px,
+//     lg: 992px,
+//     xl: 1200px,
+// ) !default;
+
+// @function breakpoint-min($name, $breakpoints: $grid-breakpoints) {
+//     $min: map-get($breakpoints, $name);
+//     @return if($min != 0, $min, null);
+// }
+
+// @function breakpoint-infix($name, $breakpoints: $grid-breakpoints) {
+//     @return if(breakpoint-min($name, $breakpoints) == null, "", "-#{$name}");
+// }
+
+// @mixin media-breakpoint-up($name, $breakpoints: $grid-breakpoints) {
+//     $min: breakpoint-min($name, $breakpoints);
+//     @if $min {
+//         @media (min-width: $min) {
+//             @content;
+//         }
+//     } @else {
+//         @content;
+//     }
+// }
+
+// @mixin make-col($size, $columns: $grid-columns) {
+//     flex: 0 0 percentage(math.div($size, $columns));
+//     // Add a `max-width` to ensure content within each column does not blow out
+//     // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+//     // do not appear to require this.
+//     max-width: percentage(math.div($size, $columns));
+// }
+
+// @mixin make-col-offset($size, $columns: $grid-columns) {
+//     $num: math.div($size, $columns);
+//     margin-left: if($num == 0, 0, percentage($num));
+// }
+
+// @mixin make-grid-columns($columns: $grid-columns, $gutter: $grid-gutter-width, $breakpoints: $grid-breakpoints) {
+//     // Common properties for all breakpoints
+//     %grid-column {
+//         position: relative;
+//         width: 100%;
+//         min-height: 1px; // Prevent columns from collapsing when empty
+//         padding-right: math.div($gutter, 2);
+//         padding-left: math.div($gutter, 2);
+//     }
+
+//     @each $breakpoint in map-keys($breakpoints) {
+//         $infix: breakpoint-infix($breakpoint, $breakpoints);
+
+//         // Allow columns to stretch full width below their breakpoints
+//         @for $i from 1 through $columns {
+//             .col#{$infix}-#{$i} {
+//                 @extend %grid-column;
+//             }
+//         }
+//         .col#{$infix},
+//         .col#{$infix}-auto {
+//             @extend %grid-column;
+//         }
+
+//         @include media-breakpoint-up($breakpoint, $breakpoints) {
+//             // Provide basic `.col-{bp}` classes for equal-width flexbox columns
+//             .col#{$infix} {
+//                 flex-basis: 0;
+//                 flex-grow: 1;
+//                 max-width: 100%;
+//             }
+//             .col#{$infix}-auto {
+//                 flex: 0 0 auto;
+//                 width: auto;
+//                 max-width: none; // Reset earlier grid tiers
+//             }
+
+//             @for $i from 1 through $columns {
+//                 .col#{$infix}-#{$i} {
+//                     @include make-col($i, $columns);
+//                 }
+//             }
+
+//             .order#{$infix}-first {
+//                 order: -1;
+//             }
+
+//             @for $i from 1 through $columns {
+//                 .order#{$infix}-#{$i} {
+//                     order: $i;
+//                 }
+//             }
+
+//             // `$columns - 1` because offsetting by the width of an entire row isn't possible
+//             @for $i from 0 through ($columns - 1) {
+//                 @if not($infix == "" and $i == 0) {
+//                     // Avoid emitting useless .offset-0
+//                     .offset#{$infix}-#{$i} {
+//                         @include make-col-offset($i, $columns);
+//                     }
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// @include make-grid-columns();

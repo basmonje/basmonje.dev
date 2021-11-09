@@ -1,0 +1,22 @@
+.--qs-card {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    word-wrap: break-word;
+    overflow: hidden;
+    position: relative;
+
+    &__header {
+        padding: 0.5rem;
+    }
+
+    &__footer {
+        padding: 0.5rem;
+    }
+
+    &__content {
+        padding: 0.5rem;
+        height: 100%;
+    }
+}

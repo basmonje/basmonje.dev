@@ -1,0 +1,98 @@
+@mixin generic($map, $atributo) {
+    @each $nombre, $valor in $map {
+        &-#{$nombre} {
+            #{$atributo}: $valor;
+        }
+    }
+}
+
+@mixin hover($map, $atributo) {
+    @each $nombre, $valor in $map {
+        &-#{$nombre} {
+            &:hover {
+                #{$atributo}: $valor;
+            }
+        }
+    }
+}
+
+@mixin mediaQuery($map, $arg) {
+    @each $nombre, $valor in $devices {
+        &-#{$nombre} {
+            @media (min-width: $valor) {
+                @each $name, $mod in $map {
+                    &-#{$name} {
+                        #{$arg}: $mod;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin breakpoint($device) {
+    @if not map-has-key($devices, $device) {
+        @error 'Device value (#{$device}) is unknown';
+    }
+
+    @media (min-width: #{map-get($devices, $device)}) {
+        @content;
+    }
+}
+
+@mixin createTemplateGrid($arg) {
+    @each $nombre, $valor in $gridCol {
+        &-#{$nombre} {
+            #{$arg}: repeat($valor, 1fr);
+        }
+    }
+}
+
+@mixin createSpanGrid($arg) {
+    @each $nombre, $valor in $gridCol {
+        &-#{$nombre} {
+            #{$arg}: span $valor;
+        }
+    }
+}
+
+@mixin genericMediaSize($map, $arg, $flag) {
+    @each $nombre, $valor in $sizes-breakpoints {
+        .#{$nombre} {
+            @media (min-width: $valor) {
+                @each $name, $mod in $map {
+                    &-#{$flag}-#{$name} {
+                        #{$arg}: $mod;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@mixin borderDirection($direction) {
+    @each $nombre, $valor in $sizesPx {
+        &-#{$nombre} {
+            border-#{$direction}-style: solid;
+            border-#{$direction}-width: $valor;
+        }
+    }
+}
+
+@mixin createCircle() {
+    @each $nombre, $valor in $circles {
+        &-#{$nombre} {
+            width: $valor;
+            height: $valor;
+            border-radius: 50% !important;
+        }
+    }
+}
+
+@mixin createDimensions($map, $dimention) {
+    @each $nombre, $valor in $map {
+        &-#{$nombre} {
+            #{$dimention}: $valor;
+        }
+    }
+}

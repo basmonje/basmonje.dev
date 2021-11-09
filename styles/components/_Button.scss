@@ -1,0 +1,51 @@
+.--button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    border: inherit;
+    gap: 0.5rem;
+    outline: none;
+
+    &__content {
+        font-size: 0.875rem;
+        font-weight: 400;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+}
+
+.--button-reset {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+}
+
+@mixin ButtonSize($height, $padding) {
+    height: $height;
+    padding: $padding;
+}
+
+.--button-sm {
+    @include ButtonSize(32px, 0 4px);
+}
+
+.--button-md {
+    @include ButtonSize(40px, 0 12px);
+}
+
+.--button-lg {
+    @include ButtonSize(48px, 0 12px);
+}
+
+.--outline-none {
+    outline: none;
+
+    &:active {
+        outline: none;
+    }
+}

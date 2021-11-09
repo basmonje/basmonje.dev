@@ -1,0 +1,29 @@
+.--qs-container {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.--qs-container-small {
+    @media (min-width: $sm) {
+        max-width: $sm;
+    }
+}
+
+.--qs-container-medium {
+    @media (min-width: $md) {
+        max-width: $md;
+    }
+}
+
+.--qs-container-large {
+    @media (min-width: $lg) {
+        max-width: $lg;
+    }
+}
+
+.--qs-container-xlarge {
+    @media (min-width: $xl) {
+        max-width: $xl;
+    }
+}

@@ -1,0 +1,45 @@
+.--m {
+    @each $nombre, $valor in $spaces {
+        &-#{$nombre} {
+            margin: $valor;
+        }
+    }
+
+    @each $nombre, $valor in $spaces {
+        &t-#{$nombre} {
+            margin-top: $valor;
+        }
+    }
+
+    @each $nombre, $valor in $spaces {
+        &b-#{$nombre} {
+            margin-bottom: $valor;
+        }
+    }
+
+    @each $nombre, $valor in $spaces {
+        &l-#{$nombre} {
+            margin-left: $valor;
+        }
+    }
+
+    @each $nombre, $valor in $spaces {
+        &r-#{$nombre} {
+            margin-right: $valor;
+        }
+    }
+
+    @each $nombre, $valor in $spaces {
+        &x-#{$nombre} {
+            margin-left: $valor;
+            margin-right: $valor;
+        }
+    }
+
+    @each $nombre, $valor in $spaces {
+        &y-#{$nombre} {
+            margin-top: $valor;
+            margin-bottom: $valor;
+        }
+    }
+}
