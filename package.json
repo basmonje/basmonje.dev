@@ -10,6 +10,7 @@
     "dev": "next dev",
     "start": "next start",
     "build": "next build",
+    "minify": "sass styles/global.scss styles/global.min.css --style compressed",
     "depends": "npm link @basmonje/quarks_ui @basmonje/quarks_styles @basmonje/icons"
   },
   "keywords": [],
