@@ -1,10 +1,49 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Container, Button, Menu } from "@basmonje/quarks_ui";
 import Link from "next/link";
 import { useRouter } from "next/router";
-
+import { useTheme } from "../hooks/useTheme";
+import { Moon, Sun } from "@basmonje/icons";
 export interface ListProps {
   list: { href: string; label: string }[];
+}
+
+function Navbar({ list }: typeof defaultPropsNavbar) {
+  const [mounted, setMounted] = useState(false);
+  const { theme, setTheme, resolvedTheme } = useTheme();
+
+  useEffect(() => setMounted(true), []);
+
+  return (
+    <header className="--position-sticky --index-1 --td-bg-gray-8 --tw-bg-gray-1 --top-none --p-x-2 --border-bottom-xs --tw-border-gray-2 --td-border-gray-7 --h-100">
+      <Container size="thin">
+        <nav className="--flex --flex-row --items-center --content-between --p-y-2">
+          <div className="--flex --items-center">
+            <Button
+              onClick={() => setTheme(theme === "light" ? "dark" : "light")}
+              radius="small"
+              className="border-hover --border-xs --td-border-gray-7"
+            >
+              {mounted && (
+                <span className="--td-text-gray-1 --tw-text-gray-8">
+                  {resolvedTheme === "dark" ? (
+                    <Sun strokeWidth="1" />
+                  ) : (
+                    <Moon strokeWidth="1" />
+                  )}
+                </span>
+              )}
+            </Button>
+          </div>
+          <div className="navbar-menu">
+            <div className="navbar-menu__list">
+              <SubNav list={list} />
+            </div>
+          </div>
+        </nav>
+      </Container>
+    </header>
+  );
 }
 
 export const defaultPropsNavbar = {
@@ -18,26 +57,27 @@ export const defaultPropsNavbar = {
       label: "Snippets",
     },
     {
-      href: "/projects",
-      label: "Projects",
+      href: "/blog",
+      label: "blog",
     },
   ],
 };
 
 function SubNav({ list }: ListProps) {
   const { pathname } = useRouter();
+  const classLink = `--tw-text-gray-3 --td-bg-hover-gray-7 --radius-small --p-t-1 --p-b-1 --p-l-2 --p-r-2`;
   return (
-    <ul className="--flex --flex-row">
+    <ul className="--flex --flex-row --gap-sm">
       {list &&
         list.map((item, index) => (
-          <li className="--pl-2" key={index}>
+          <li key={index}>
             <Link href={item.href}>
               <a
-                className={`--tw-text-gray-5
+                className={`${classLink}
                     ${
                       pathname === item.href
                         ? "--td-text-gray-1 --tw-text-gray-8"
-                        : "--td-text-gray-4 --td-text-gray-6"
+                        : "--td-text-gray-4 --td-text-gray-5"
                     }
                   `}
               >
@@ -47,31 +87,6 @@ function SubNav({ list }: ListProps) {
           </li>
         ))}
     </ul>
-  );
-}
-
-function Navbar({ list }: typeof defaultPropsNavbar) {
-  const [isOpen, setOpen] = useState(false);
-
-  return (
-    <header className="p-2 --border-bottom-xs">
-      <Container size="small">
-        <nav className="--flex --flex-row --content-between --py-2 --items-center">
-          <div className="logo">
-            <Link href="/">
-              <a className="--tw-text-gray-5 --tw-text-hover-gray-8 --td-text-gray-5 --td-text-hover-gray-2">
-                basmonje.
-              </a>
-            </Link>
-          </div>
-          <div className="navbar-menu">
-            <div className="navbar-menu__list">
-              <SubNav list={list} />
-            </div>
-          </div>
-        </nav>
-      </Container>
-    </header>
   );
 }
 

@@ -24,20 +24,24 @@ export default function ContentLayout({ children, frontmatter, type }: Props) {
     <div className="bg-dark">
       <Head>
         <title>{frontmatter.title}</title>
-        <meta name="theme-color" content="#000" />
+        <meta name="theme-color" content="#191919" />
       </Head>
       <Navbar />
       <main>
-        <Subnav page={type} className="bg-gray-900" />
+        {/* <Subnav page={type} className="--bg-gray-900" /> */}
 
-        <article className="mx-2 overflowy-auto overflowx-hidden">
-          <Container size="small">
-            <div className="flex flex-col my-5 gap-1">
-              <h1 className="text-3xl text-bold">{frontmatter.title}</h1>
-              <p className="text-sm text-thin">{frontmatter.dateUpdate}</p>
-            </div>
-          </Container>
-          <Container size="small" className="markdown">
+        <article className="overflowy-auto overflowx-hidden">
+          <div className="--tw-bg-gray-1 --td-bg-gray-8">
+            <Container size="thin">
+              <div className="--flex --flex-col --p-y-100 --gap-1 --m-x-3">
+                <h1 className="--text-2xl --text-height-2xl --text-md-3xl --text-md-height-3xl">
+                  {frontmatter.title}
+                </h1>
+                <p className="text-sm text-thin">{frontmatter.dateUpdate}</p>
+              </div>
+            </Container>
+          </div>
+          <Container size="small" className="--markdown">
             {children}
           </Container>
         </article>

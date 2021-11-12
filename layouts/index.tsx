@@ -13,7 +13,7 @@ export default function Layout({ children, title = "Workspace" }: Props) {
     <div className="bg-dark">
       <Head>
         <title>{title}</title>
-        <meta name="theme-color" content="#000" />
+        <meta name="theme-color" content="#191919" />
       </Head>
       <Navbar />
       <main className="main">

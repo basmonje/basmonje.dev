@@ -15,7 +15,7 @@ export interface ListProps {
 
 export default function ListDocs({ posts, page }: ListProps) {
   return (
-    <Container size="small">
+    <Container size="thin">
       <div className="--grid --grid-col-1 --grid-xs-col-2">
         {posts &&
           posts.map((post, index) => (

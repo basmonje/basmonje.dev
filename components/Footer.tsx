@@ -7,17 +7,7 @@ interface FooterProps {
 }
 
 const defaultPropsFooter = {
-  pages: [
-    {
-      href: "/",
-      label: "Home",
-    },
-    {
-      href: "/blog",
-      label: "Blog",
-    },
-  ],
-  external: [
+  social: [
     {
       href: "https://github.com/basmonje",
       label: "Github",
@@ -27,7 +17,15 @@ const defaultPropsFooter = {
       label: "Linkedin",
     },
   ],
-  utilities: [
+  sitemap: [
+    {
+      href: "/",
+      label: "Home",
+    },
+    {
+      href: "/blog",
+      label: "Blog",
+    },
     {
       href: "/notes",
       label: "Notes",
@@ -42,22 +40,19 @@ const defaultPropsFooter = {
     },
   ],
 };
-function Footer({ external, pages, utilities }: typeof defaultPropsFooter) {
+function Footer({ social, sitemap }: typeof defaultPropsFooter) {
   return (
-    <footer className="--border-top-xs --border-gray-5 --mb-5">
-      <Container size="small">
-        <div className="--mt-5 --flex --flex-col --flex-sm-row --content-between">
-          <FooterList list={pages} />
-          <FooterList list={external} external />
-          <FooterList list={utilities} />
+    <footer className="--border-top-xs --border-gray-2 --mb-5 --p-x-2">
+      <Container size="thin">
+        <div className="--m-y-5 --flex --flex-col --flex-xs-row --content-between">
+          <FooterList list={social} external />
+
+          <div className="--flex --flex-col --gap-lg">
+            <span className="--text-small">Sitemap</span>
+            <FooterList list={sitemap} />
+          </div>
         </div>
       </Container>
-
-      <div>
-        <Link href="#hero">
-          <a className="--td-text-gray-3">Ir a inicio</a>
-        </Link>
-      </div>
     </footer>
   );
 }
@@ -76,7 +71,7 @@ function FooterList({ list, external = false }: ListProps) {
     <div className="footer__list">
       {list &&
         list.map((item, index) => (
-          <ul key={index} className="flex flex-col gap-1">
+          <ul key={index} className="--flex --flex-col --gap-xs">
             <Anchor
               href={item.href}
               className="--td-text-gray-5 --td-text-hover-gray-2 --tw-text-gray-6 --tw-text-hover-gray-8"

@@ -19,7 +19,7 @@ export default function Subnav({ page, className }: Props) {
           <div>
             <Link href={`/${page}`}>
               <a>
-                <Button size="lg" hover="700" color="gray-100">
+                <Button size="lg" color="gray-100">
                   <ArrowLeft />
                   Volver atras
                 </Button>

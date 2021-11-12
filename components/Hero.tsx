@@ -4,27 +4,33 @@ import { ArrowDown } from "@basmonje/icons";
 
 export default function Hero() {
   return (
-    <div
-      id="hero"
-      className="--flex --flex-col --items-center --border-bottom-xs --border-gray-5"
-    >
-      <Container size="small">
-        <Box className="--flex --flex-col --content-center --border-x-none --border-sm-x-xs --p-3 --border-gray-5 --td-bg-hover-gray-7 --py-200">
-          <h1 className="text-bold text-4xl">Bastián Monje</h1>
-          <p className="text-sm">Estudiante de desarrollo de software</p>
-          <span className="text-base mt-2">
-            Autodidacta, apasionado por la tecnología, amante de la música y las
-            ciencias.
-          </span>
+    <div id="hero" className="--p-x-3 --tw-bg-gray-1">
+      <Container size="medium">
+        <Box className="--flex --flex-col --items-center --content-center --p-t-100 --p-b-100">
+          <h1 className="--text-4xl --text-height-4xl --text-sm-6xl --text-sm-height-6xl --text-center">
+            Bastián Monje
+          </h1>
+          <p className="--p-x-3 --p-sm-x-100 --p-md-x-200 --text-center">
+            Soy desarrollador full stack interesado en jamstack y sistemas de
+            diseño. Me encanta construir contenido simple y escribir las cosas
+            que voy aprendiendo en este largo camino del desarrollo.
+          </p>
 
-          <div className="--flex --items-center --content-center --pt-5">
-          <Link href="#projects">
-            <a className="--outline-none">
-              <Button bgHv="warning">
-                <ArrowDown />
-              </Button>
-            </a>
-          </Link>
+          <div className="--flex --gap-sm --items-center --content-center --p-t-5">
+            <Link href="#recently-post">
+              <a className="--outline-none">
+                <Button bg="success" bgHv="success">
+                  Últimos post
+                </Button>
+              </a>
+            </Link>
+            <Link href="/snippets">
+              <a className="--outline-none">
+                <Button bg="gray" bgHv="gray">
+                  Snippets
+                </Button>
+              </a>
+            </Link>
           </div>
         </Box>
       </Container>
