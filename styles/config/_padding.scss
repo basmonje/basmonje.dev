@@ -1,45 +1,63 @@
-.--p {
+$paddingDirections: (
+    t: padding-top,
+    b: padding-bottom,
+    l: padding-left,
+    r: padding-right,
+);
+
+@mixin paddingCreate() {
     @each $nombre, $valor in $spaces {
         &-#{$nombre} {
             padding: $valor;
         }
     }
 
-    @each $nombre, $valor in $spaces {
-        &t-#{$nombre} {
-            padding-top: $valor;
+    @each $name, $arg in $paddingDirections {
+        @each $nombre, $valor in $spaces {
+            &-#{$name}-#{$nombre} {
+                #{$arg}: $valor;
+            }
         }
     }
 
     @each $nombre, $valor in $spaces {
-        &b-#{$nombre} {
-            padding-bottom: $valor;
-        }
-    }
-
-    @each $nombre, $valor in $spaces {
-        &l-#{$nombre} {
-            padding-left: $valor;
-        }
-    }
-
-    @each $nombre, $valor in $spaces {
-        &r-#{$nombre} {
-            padding-right: $valor;
-        }
-    }
-
-    @each $nombre, $valor in $spaces {
-        &x-#{$nombre} {
+        &-x-#{$nombre} {
             padding-left: $valor;
             padding-right: $valor;
         }
     }
 
     @each $nombre, $valor in $spaces {
-        &y-#{$nombre} {
+        &-y-#{$nombre} {
             padding-top: $valor;
             padding-bottom: $valor;
+        }
+    }
+}
+.--p {
+    @include paddingCreate();
+
+    @include breakpoint(xs) {
+        &-xs {
+            @include paddingCreate();
+        }
+    }
+
+    @include breakpoint(sm) {
+        &-sm {
+            @include paddingCreate();
+        }
+    }
+
+    @include breakpoint(md) {
+        &-md {
+            @include paddingCreate();
+        }
+    }
+
+    @include breakpoint(lg) {
+        &-lg {
+            @include paddingCreate();
         }
     }
 }

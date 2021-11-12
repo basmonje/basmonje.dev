@@ -1,45 +1,64 @@
-.--m {
+$marginDirections: (
+    t: margin-top,
+    b: margin-bottom,
+    l: margin-left,
+    r: margin-right,
+);
+
+@mixin marginCreate() {
     @each $nombre, $valor in $spaces {
         &-#{$nombre} {
             margin: $valor;
         }
     }
 
-    @each $nombre, $valor in $spaces {
-        &t-#{$nombre} {
-            margin-top: $valor;
+    @each $name, $arg in $marginDirections {
+        @each $nombre, $valor in $spaces {
+            &-#{$name}-#{$nombre} {
+                #{$arg}: $valor;
+            }
         }
     }
 
     @each $nombre, $valor in $spaces {
-        &b-#{$nombre} {
-            margin-bottom: $valor;
-        }
-    }
-
-    @each $nombre, $valor in $spaces {
-        &l-#{$nombre} {
-            margin-left: $valor;
-        }
-    }
-
-    @each $nombre, $valor in $spaces {
-        &r-#{$nombre} {
-            margin-right: $valor;
-        }
-    }
-
-    @each $nombre, $valor in $spaces {
-        &x-#{$nombre} {
+        &-x-#{$nombre} {
             margin-left: $valor;
             margin-right: $valor;
         }
     }
 
     @each $nombre, $valor in $spaces {
-        &y-#{$nombre} {
+        &-y-#{$nombre} {
             margin-top: $valor;
             margin-bottom: $valor;
+        }
+    }
+}
+
+.--m {
+    @include marginCreate();
+
+    @include breakpoint(xs) {
+        &-xs {
+            @include marginCreate();
+        }
+    }
+
+    @include breakpoint(sm) {
+        &-sm {
+            @include marginCreate();
+        }
+    }
+
+    @include breakpoint(md) {
+        &-md {
+            @include marginCreate();
+        }
+    }
+
+    @include breakpoint(lg) {
+        &-lg {
+            @include marginCreate();
         }
     }
 }

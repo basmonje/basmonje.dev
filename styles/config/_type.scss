@@ -1,0 +1,64 @@
+.--text {
+    @include generic($colors, color);
+    @include generic($fontSizes, font-size);
+    
+    @include generic($textAlign, text-align);
+
+    &-height {
+        @include generic($fontLineHeight, line-height);
+    }
+
+    &-hover {
+        @include hover($colors, color);
+    }
+
+    @include breakpoint(xs) {
+        &-xs {
+            @include generic($fontSizes, font-size);
+
+            &-height {
+                @include generic($fontLineHeight, line-height);
+            }
+        }
+    }
+
+    @include breakpoint(sm) {
+        &-sm {
+            @include generic($fontSizes, font-size);
+
+            &-height {
+                @include generic($fontLineHeight, line-height);
+            }
+        }
+    }
+
+    @include breakpoint(md) {
+        &-md {
+            @include generic($fontSizes, font-size);
+
+            &-height {
+                @include generic($fontLineHeight, line-height);
+            }
+        }
+    }
+
+    @include breakpoint(lg) {
+        &-lg {
+            @include generic($fontSizes, font-size);
+
+            &-height {
+                @include generic($fontLineHeight, line-height);
+            }
+        }
+    }
+
+    @include breakpoint(xl) {
+        &-xl {
+            @include generic($fontSizes, font-size);
+
+            &-height {
+                @include generic($fontLineHeight, line-height);
+            }
+        }
+    }
+}

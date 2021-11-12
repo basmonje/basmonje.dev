@@ -176,6 +176,27 @@
     @include createDimensions($height, height);
 }
 
+$listOverflow: (
+    hidden: hidden,
+    scroll: scroll,
+    visible: visible,
+    auto: auto,
+    inherit: inherit,
+    initial: initial,
+);
+
+.--overflow {
+    @each $name, $value in $listOverflow {
+        &-#{$name} {
+            overflow: $value;
+        }
+    }
+}
+
+.--index-1 {
+    z-index: 1;
+}
+
 // $w-gutter: 24px !default;
 // $grid-columns: 12 !default;
 // $grid-gutter-width: $w-gutter !default;

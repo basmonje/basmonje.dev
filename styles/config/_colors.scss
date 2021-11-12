@@ -6,16 +6,6 @@
     }
 }
 
-.--text {
-    @include generic($colors, color);
-    @include generic($fontSizes, font-size);
-    @include generic($fontLineHeight, line-height);
-
-    &-hover {
-        @include hover($colors, color);
-    }
-}
-
 .dark {
     .--td-bg {
         @include generic($colors, background-color);
@@ -37,6 +27,10 @@
 .light {
     .--tw-bg {
         @include generic($colors, background-color);
+
+        &-hover {
+            @include hover($colors, background-color);
+        }
     }
 
     .--tw-text {
@@ -46,4 +40,8 @@
             @include hover($colors, color);
         }
     }
+}
+
+.--box-shadow {
+    box-shadow: rgba(255, 255, 255, 0.2) 0px 0px 0px 0.5px inset;
 }

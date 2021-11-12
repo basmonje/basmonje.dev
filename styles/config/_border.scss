@@ -278,6 +278,18 @@
     }
 }
 
+.dark {
+    .--td-border {
+        @include generic($colors, border-color);
+    }
+}
+
+.light {
+    .--tw-border {
+        @include generic($colors, border-color);
+    }
+}
+
 .--radius {
     @include generic($radius, border-radius);
 }
