@@ -1,0 +1,25 @@
+---
+title: Revisa tipos en Javascript sin escribir Typescript
+date: "2021-10-01"
+tags: ["types", "typescript"]
+language: javascript
+---
+
+```js
+// @ts-check
+
+/** @type {string} */
+let foo;
+
+/** @type {string | number} */
+let b;
+
+/** @type {number[]} */
+let w = [1, 2];
+
+/** @type {{ name: string, age: number }} */
+const person = {
+  name: "Javier",
+  age: 15,
+};
+```

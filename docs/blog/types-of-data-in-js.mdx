@@ -1,0 +1,44 @@
+---
+title: Tipos de datos en Javascript
+date: "2021-10-01"
+tags: ["type_data"]
+language: javascript
+---
+
+Javascript reconoce los siguientes tipos de variables:
+
+- String
+- Symbol
+- Number
+- Boolean
+- Undefined
+- Null
+
+Estos se consideran de tipo primitivo (no poseen propiedades ni métodos propios)
+
+```javascript
+var isString = "Hola, soy una cadena de texto";
+var isNumber = 13;
+var isBoolean = true;
+var isUndefined = undefined;
+var isNull = null;
+```
+
+Sumando a esto, existen otros tipos no primitivos:
+Objetos, Funciones
+
+```javascript
+// Un objeto
+var objects = {
+  name: "Eduardo",
+  lastname: "Bacon",
+};
+
+// Función
+function myFunction(name) {
+  return `Bienvenido ${name}!`;
+}
+
+var welcome = myFunction(obj.name);
+console.log(welcome);
+```

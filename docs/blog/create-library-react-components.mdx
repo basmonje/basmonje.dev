@@ -1,0 +1,604 @@
+---
+title: Crear libreria de react
+date: "2021-10-29"
+tags: ["react"]
+language: typescript
+---
+
+Quarks es una libreria de componentes de React accessibles y reutilizables, la idea principal es aumentar la productividad al desarrollar sitios y aplicaciones web.
+
+# Tabla de contenido
+
+- [Introducción](#introducción)
+- [Tabla de contenido](#tabla-de-contenido)
+- [Info general](#info-general)
+- [Alternativas](#alternativas)
+  - [Referencias](#referencias)
+- [Inicializar el proyecto](#inicializar-el-proyecto)
+  - [Organizar directorios](#organizar-directorios)
+  - [Crear primer componente](#crear-primer-componente)
+  - [Agregar componentes](#agregar-componentes)
+- [Configurar typescript](#configurar-typescript)
+  - [Agregar script build](#agregar-script-build)
+  - [Ejecutar script build](#ejecutar-script-build)
+- [Configurar Rollup](#configurar-rollup)
+  - [Plugins](#plugins)
+  - [rollup.config.js](#rollupconfigjs)
+  - [Configuración packages.json](#configuración-packagesjson)
+- [Probar](#probar)
+  - [Restringir directorios](#restringir-directorios)
+  - [Tipos de agrupación](#tipos-de-agrupación)
+- [Agregar biblioteca de pruebas Jest y React testing library](#agregar-biblioteca-de-pruebas-jest-y-react-testing-library)
+- [Agregar preprocesador Sass](#agregar-preprocesador-sass)
+
+# Info general
+
+A lo largo de este viaje aprendiendo sobre desarrollo web, me he dado cuenta de que he sobreescrito los mismos componentes una y otras vez, creando este bucle que a lo larga puede ser una perdida de tiempo. Si podemos detectar este patrón repetitivo, podremos automatizar esta tarea.
+
+Mi solución sería crear una librería de componentes,
+
+Objetivo final crear sistema de diseño, con nuestros principios y prácticas.
+Requisitos previos para crear la biblioteca de componentes.
+
+Primero crearemos componentes simples desde cero usando React, Typescript y Rollup para agrupar.
+
+- React
+- Typescript
+- [Rollup (module bundler)](https://rollupjs.org/guide/en/#installation)
+
+# Alternativas
+
+Antes de crear nuestra biblioteca, podemos dar un vistazo a nuestro alrededor para ver que otras bibliotecas de componentes de React axisten.
+
+- [Blueprint](https://github.com/palantir/blueprint)
+- [UI Material Library](https://mui.com/)
+- [Ant design](https://ant.design/)
+- [Rsuitejs](https://rsuitejs.com/)
+- [React Desktop](https://github.com/gabrielbull/react-desktop)
+- [Rebass](https://github.com/rebassjs/rebass)
+- [Gestalt](https://github.com/pinterest/gestalt)
+- [Carbon Design System](https://github.com/carbon-design-system/carbon)
+
+## Referencias
+
+- [Creating your own react componente library](https://blog.harveydelaney.com/creating-your-own-react-component-library/)
+- [Creating a React Component Library with TypeScript, Storybook & Rollup](https://blog.cristiana.tech/creating-a-react-component-library-with-typescript-storybook-and-rollup)
+
+# Inicializar el proyecto
+
+Comenzamos creando un directorio en mi caso se llamará `quarks` e iniciamos el manejador de dependencias, mas conocido como `package.json`.
+
+```bash
+# crear carpeta
+md standard
+
+# crear package.json
+npm init --yes
+```
+
+Es momento de instalar las dependencias que utilizaremos en la base, luego iremos añadiendo las otras dependencias.
+
+```bash
+npm i -D typescript react @types/react
+```
+
+Cuando finalice la descarga de las dependencias, se creará un directorio llamado `node_modules`, el cual contendra todas las dependencias que vallamos instalando.
+
+El siguiente paso será agregar `peerDependencies`, algo así como; dependencias que no queremos que sean instaladas automáticamente. Esto es una solución para que no vuelva a descargar e instalar varias veces, así evitamos conflictos.
+
+```json:package.json
+"peerDependencies": {
+    "react": "^17.0.2"
+}
+```
+
+## Organizar directorios
+
+Podemos agrupar los componentes como nos guste, en mi caso creare una carpeta llamada `src` y dentro una carpeta llamada `components` en donde estarán todos los componentes separados por carpetas con sus nombres respectivos.
+
+```bash
+╔═ examples
+╠═ src
+║   ╠═ components
+║   ║   ╠═ Button
+║   ║   ║   ╠═ Button.css
+║   ║   ║   ╠═ Button.tsx
+║   ║   ║   ╠═ Button.types.ts
+║   ║   ║   ╚═ index.ts
+║   ║   ╚═ index.ts
+║   ╚═ index.ts
+╚═ package.json
+```
+
+## Crear primer componente
+
+Es tiempo de crear nuestro primer botón, dentro del directorio `src/components` creamos una carpeta llamada `Button` junto a los siguientes archivos.
+
+- `Button.types.ts`
+- `button.css`
+- `Button.tsx`
+- `index.ts`
+
+El primer archivo será `Button.types.ts`.
+
+```typescript:components/Button/Button.types.ts
+import { ReactNode, MouseEventHandler } from 'react'
+
+export interface ButtonProps {
+    type?: "primary" | "secondary" | "error" | "outline";
+    size?: "small" | "medium" | "large";
+    children: ReactNode;
+    disabled?: boolean;
+    onClick: MouseEventHandler<HTMLButtonElement>;
+}
+```
+
+Luego crearemos una hoja de estilos `button.css`.
+
+```css:components/Button/button.css
+.button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    cursor: pointer;
+    min-width: 32px;
+    min-height: 32px;
+    background-color: transparent;
+    padding: .5rem 1.5rem;
+}
+
+.button-primary {
+    background-color: aqua;
+}
+
+.button-secondary {
+    background-color: burlywood;
+}
+
+.button-error {
+    background-color: red;
+}
+
+```
+
+Ahora creamos componente `Button.tsx`
+
+```typescript:components/Button/Button.tsx
+import * as React from "react";
+
+import "./button.css";
+
+import { ButtonProps } from "./Button.types";
+
+const styles = {
+  sizes: {
+    small: `button-sm`,
+    medium: `button-md`,
+    large: `button-lg`,
+  },
+};
+
+const Button: React.FC<ButtonProps> = ({
+  type,
+  children,
+  size = "medium",
+  disabled,
+  onClick,
+}) => {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      disabled={disabled}
+      className={`button
+        button-${type}
+        ${size ? styles.sizes[size] : styles.sizes.medium}
+      `}
+    >
+      {children}
+    </button>
+  );
+};
+
+export default Button;
+
+```
+
+Para finalizar agregamos el archivo `index.ts`, este archivo es el responsable de exportar lo que nosotros queramos del componente, en este caso exportaremos solo el componente, como también podríamos agregar los types del componente en caso de necesitarlos. En el siguiente ejemplo exportaremos solo el componente por default.
+
+```typescript:components/Button/index.ts
+export { default } from './Button'
+```
+
+Cuando tengamos los archivos creados, estará listo nuestro primer componente, de momento es muy básico, pero luego iremos mejorando sus funcionalidades.
+
+## Agregar componentes
+
+Cada vez que agregamos un componente hay que modificar el archivo `src/components/index.ts`. Como se muestra en el siguiente ejemplo, con el componente `Button`.
+
+Esto nos ayudará a agrupar los componentes y exportarlos.
+
+```typescript:src/components/index.ts
+export { default as Button } from './Button'
+```
+
+Para finalizar, crearemos el archivo `index.ts` dentro del directorio `src`. Este archivo agrupara todos los componentes ingresados en `src/components/index.ts` como también en un futuro podremos agregar `hooks`. Este ejemplo solo exporta todos los componentes.
+
+```typescript:src/index.ts
+export * from './components'
+```
+
+# Configurar typescript
+
+Typescript utiliza un archivo llamado `tsconfig.json` para configurar las opciones del compilador para un proyecto. Cree un archivo `tsconfig.json` en la raíz del directorio del proyecto y copie el siguiente código:
+
+```json:tsconfig.json {4,5}
+{
+  "compilerOptions": {
+    "target": "es5",
+    "module": "esnext",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
+    "skipLibCheck": true,
+    "outDir": "dist",
+    "jsx": "react",
+    "sourceMap": true,
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+  }
+}
+
+```
+
+
+También podemos crear el archivo con el siguiente código.
+
+```bash
+npx tsc --init
+```
+
+Para obtener mas información sobre las opciones disponibles, la [documentación de Typescript](https://www.typescriptlang.org/docs/handbook/compiler-options.html) oficial puede ayudarnos.
+
+## Agregar script build
+
+Agregar scripts build en `package.json` para probar typescript.
+
+```json:package.json
+"scripts": {
+    "build": "tsc"
+  },
+```
+
+## Ejecutar script build
+
+Si ejecutamos el script `build`, deberíamos ver una carpeta llamada `dist` con todos nuestro archivos ts transpilados en archivos `.js`.
+
+Ejecutar script build
+
+```bash
+npm run build
+```
+
+# Configurar Rollup
+
+Typescript es una buena alternativa, sin embargo, queda pequeña para lo que queremos hacer, si te has podido dar cuenta, nuestro primer componente no agrega los estilos css, es por eso que usaremos `Rollup` como nuestro empaquetador, entonces a instalarlo.
+
+```bash
+npm i -D rollup
+```
+
+## Plugins
+
+Rollup tiene un sistema de complementos mediante el cual podemos especificar todas las tareas que deben realizarse durante el proceso de agrupación. Necesitaremos los siguientes plugins
+
+- `@rollup/plugin-node-resolve` - Resolver dependencias de terceros en `node_modules`
+- `@rollup/plugin-commonjs` - Para agrupar en formato `commonjs`
+- `@rollup/plugin-typescript` - Para transpilar nuestro código Typescript en Js
+- `rollup-plugin-peer-deps-external` - Para evitar la agrupación `peerDependencies`
+- `rollup-plugin-postcss` - Para manejar nuestro css
+- `rollup-plugin-terser` - Para minimizar nuestro paquete
+
+Vamos a instalar
+
+```bash
+npm i -D @rollup/plugin-node-resolve @rollup/plugin-commonjs @rollup/plugin-typescript rollup-plugin-peer-deps-external rollup-plugin-postcss rollup-plugin-terser
+```
+
+## rollup.config.js
+
+El siguiente paso es agregar el archivo. Es aquí donde están nuestras configuraciones de rollup.
+
+```js:rollup.config.js
+import resolve from '@rollup/plugin-node-resolve';
+import commonjs from '@rollup/plugin-commonjs';
+import typescript from '@rollup/plugin-typescript';
+import { terser } from 'rollup-plugin-terser';
+import external from 'rollup-plugin-peer-deps-external';
+import postcss from 'rollup-plugin-postcss';
+
+const packageJson = require('./package.json');
+
+export default {
+    input: 'src/index.ts',
+    output: [
+        {
+            file: packageJson.main,
+            format: 'cjs',
+            sourcemap: true,
+            name: 'react-lib'
+        },
+        {
+            file: packageJson.module,
+            format: 'esm',
+            sourcemap: true
+        }
+    ],
+    plugins: [
+        external(),
+        resolve(),
+        commonjs(),
+        typescript({ tsconfig: './tsconfig.json' }),
+        postcss(),
+        terser()
+    ]
+}
+```
+
+## Configuración packages.json
+
+Debemos agregar y modificar unos parámetros en nuestro archivo `package.json`
+
+```json:package.json
+"main": "dist/cjs/index.js",
+"module": "dist/esm/index.js",
+```
+
+No olvidemos ahora que usaremos `Rollup` debemos cambiar el script `build`.
+
+```json:package.json
+"build": "rollup -c"
+```
+
+Si ejecutamos `npm run build`, podremos ver en nuestra carpeta `dist` con los cambios realizados con rollup.
+
+Hasta ahora ya tenemos nuestra propia libreria de componentes para facilitarnos la vida.
+
+# Probar
+
+Podemos probar nuestra biblioteca localmente usando `npm pack` ó `npm link`.
+
+Cuando hacemos `npm pack`, este empaqueta nuestra librería en un archivo `.pkg`. Para instalarlo necesitamos copiar nuestro paquete `.pkg` y crear un nuevo directorio de trabajo `mkdir test && npm init --yes`. luego pegamos nuestro paquete e instalamos `npm install nombrepaquete.pkg` y las otras dependencias, en mi caso para facilitar las cosas usaré `nextjs`, instalamos `npm i react react-dom next`.
+
+Cuando utilizamos `npm link`, este copia nuestra librería a nuestras dependencias locales, es en el mismo lugar en donde quedan las dependencias de manera global, como si hicieramos `npm i -g`, cuando lo hacemos de esta manera, es como si crearamos un espejo o un portal, en donde todos los archivos que tenemos en nuestra librería se replican en nuestras dependencias globales y todo esto transcurrre en el mismo momento. En mi caso mis dependencias globales desde `windows` estan en:
+
+```bash
+C:\Users\OWNER\AppData\Roaming\npm\node_modules
+```
+
+## Restringir directorios
+
+Si solo queremos que nuestro paquete sea una carpeta podemos agregar
+
+```json:package.json
+"files": [
+    "dist"
+  ],
+```
+
+De momento podemos decir que esta todo bien, sin embargo, hay algunas cosas mas que podemos hacer para mejorar.
+
+## Tipos de agrupación
+
+Si te fijas en nuestra carpeta después de ejecutarlo, podemos ver que no estamos agrupando nuestros tipos de typescript. La ventaja de usar TS, aquí es que los editores de código pueden recoger los tipos y proporcionar Intellisense y verificación de tipos estáticas, lo cual es super útil. Esto también nos podría ayudar a reducir la necesidad de mirar la documentación.
+
+Para esto necesitamos agregar algunas configuraciones en nuestro archivo `tsconfig.json`.
+
+```json tsconfig.json
+"declaration": true,
+"declarationDir": "types",
+"emitDeclarationOnly": true
+```
+
+Sin embargo lo que yo quiero hacer es agrupar y dejar todos los tipos en un solo archivo, para ello instalaremos el siguiente plugin de Rollup `rollup-plugin-dts`.
+
+```bash
+npm i -D rollup-plugin-dts
+```
+
+Debemos configurar otro punto de entrada en nuestro archivo `rollup.config.js` para agregar los tipos de configuración.
+
+```js:rollup.config.js
+import dts from 'rollup-plugin-dts';
+
+{
+  input: 'dist/esm/types/index.d.ts',
+  output: [{ file: 'dist/index.d.ts', format: "esm" }],
+  external: [/\.css$/],
+  plugins: [dts()],
+}
+```
+
+Lo que esto hace es tomar el archivo de nuestro paquete esm, analizar todos los tipos de archivos y generar un único archivo de tipos dentro de nuestra carpeta `dist/index.d.ts`. El código debería quedar así:
+
+```js:rollup.config.js
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
+import typescript from "@rollup/plugin-typescript";
+import { terser } from "rollup-plugin-terser";
+import external from "rollup-plugin-peer-deps-external";
+import postcss from "rollup-plugin-postcss";
+import dts from 'rollup-plugin-dts';
+
+const packageJson = require("./package.json");
+
+export default [
+  {
+    input: "src/index.ts",
+    output: [
+      {
+        file: packageJson.main,
+        format: "cjs",
+        sourcemap: true,
+        name: "react-lib",
+      },
+      {
+        file: packageJson.module,
+        format: "esm",
+        sourcemap: true,
+      },
+    ],
+    plugins: [
+      external(),
+      resolve(),
+      commonjs(),
+      typescript({ tsconfig: "./tsconfig.json" }),
+      postcss(),
+      terser(),
+    ],
+  },
+  {
+    input: "dist/esm/types/index.d.ts",
+    output: [{ file: "dist/index.d.ts", format: "esm" }],
+    external: [/\.css$/],
+    plugins: [dts()],
+  },
+];
+
+```
+
+Para finalizar esta sección, necesitamos agregar los tipos en nuestro archivo `package.json`. Como muestra el siguiente ejemplo:
+
+```json:package.json
+"types": "dist/index.d.ts"
+```
+
+# Agregar biblioteca de pruebas Jest y React testing library
+
+Mantener un alto nivel de cobertura de prueba en los componentes es extremadamente importante para su biblioteca de componentes. Necesitamos tener la confianza de que cuando hagamos cambios en nuestros componentes no romperemos la forma en que se espera que el componente se comporte en otro proyecto. Para probar nuestros componentes React usaremos `Jest` y `React testing library`.
+
+Comience instalando Jest y React testing library.
+
+```bash
+npm i -D jest ts-jest @types/jest identity-obj-proxy @testing-library/react @testing-library/jest-dom
+```
+
+Además necesitamos crear un archivo en nuestra raíz de proyecto `touch jest.config.js`.
+
+```js:jest.config.js
+module.exports = {
+  roots: ["./src"],
+  setupFilesAfterEnv: ["./jest.setup.ts"],
+  moduleFileExtensions: ["ts", "tsx", "js"],
+  testPathIgnorePatterns: ["node_modules/"],
+  transform: {
+    "^.+\\.tsx?$": "ts-jest"
+  },
+  testMatch: ["**/*.test.(ts|tsx)"],
+  moduleNameMapper: {
+    // Mocks out all these file formats when tests are run
+    "\\.(jpg|ico|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+      "identity-obj-proxy",
+    "\\.(css|less|scss|sass)$": "identity-obj-proxy"
+  }
+};
+```
+
+Podemos extender Jest con `jest-dom`, este proporciona una serie de emparejadores de Jest muy útiles.
+Si desea agregarlo debemos crear el archivo `touch jest.setup.ts` y agregar el siguiente código.
+
+```ts:jest.setup.ts
+import "@testing-library/jest-dom";
+```
+
+Ahora es tiempo de agregar los nuevos scripts que podremos ejecutar para realizar las pruebas: `package.json`
+
+```json:package.json
+"test": "jest",
+"test:watch": "jest --watch",
+```
+
+Ahora crearemos un archivo nuevo archivo en nuestro componente botón, `cd ./src/components/Button && touch Button.test.tsx` y agregaremos dos pruebas simples.
+
+```tsx:Button.test.tsx
+/**
+ * @jest-environment jsdom
+ */
+
+import React from "react";
+import { render } from "@testing-library/react";
+
+import Button from "./Button";
+import { ButtonProps } from "./Button.types";
+
+describe("Test Button Component", () => {
+  let props: ButtonProps;
+
+  beforeEach(() => {
+    props = {
+      type: "primary",
+      children: "Download",
+      onClick: () => {},
+    };
+  });
+
+  const renderComponent = () => render(<Button {...props} />);
+
+  it("should have primary className with default props", () => {
+    const { getByTestId } = renderComponent();
+
+    const buttonComponent = getByTestId("button-component");
+
+    expect(buttonComponent).toHaveClass("button-primary");
+  });
+
+  it("should have secondary className with default props", () => {
+    props.type = "secondary";
+    const { getByTestId } = renderComponent();
+
+    const buttonComponent = getByTestId("button-component");
+
+    expect(buttonComponent).toHaveClass("button-secondary");
+  });
+});
+
+```
+
+Ahora para hace un simple test, ejecturemos el script `npm run test` y nos dara el siguientes resultado:
+
+```bash
+λ npm run test
+
+> @basmonje/quarks@1.0.0 test
+> jest
+
+ PASS  src/components/Button/Button.test.tsx
+  Test Button Component
+    √ should have primary className with default props (22 ms)
+    √ should have secondary className with default props (3 ms)
+
+Test Suites: 1 passed, 1 total
+Tests:       2 passed, 2 total
+Snapshots:   0 total
+Time:        3.99 s, estimated 4 s
+Ran all test suites.
+```
+
+# Agregar preprocesador Sass
+
+En esta sección configuraremos sass en nuestro proyecto, instalaremos la dependencia necesaria.
+
+```bash
+npm i -D rollup-plugin-scss node-sass
+```
+
+Agregamos a nuestro archivo `rollup.config.js`
+
+```js:rollup.config.js
+import scss from "rollup-plugin-scss";
+
+scss({
+    outputStyle: 'compressed'
+  }),
+```

@@ -1,0 +1,48 @@
+---
+title: Window
+date: '2021-10-01'
+tags: ['javascript', 'window']
+---
+
+Representa la ventana que contiene al DOM y nos permite realizar acciones sobre la misma ventana del 
+navegador.
+
+```javascript
+window.open('http://google.com');
+// abre una nueva ventana
+
+window.close();
+// cierra la ventana actual
+
+window.confirm();
+// muestra emergente de confirmacion con 2 opciones
+
+window.alert();
+// muetra emergente de alerta con 1 opcion
+```
+
+## Variables en window
+
+window puede alojar variables o funciones que quedan disponibles de forma global como una propiedad del objeto. Es posible acceder a las propiedades de window sin necesidad de especificar el objeto.
+
+```javascript
+window.myCustomVar = 'hola';
+
+console.log(window.myCustomVar); // 'hola'
+console.log(myCustomVar); // hola
+```
+
+## Window y var 
+
+Cuando declaramos una variable con var, esta se añade como una propiedad de window.
+
+Esto no sucede cuando se utiliza let y const.
+
+```javascript
+var tetst = 'hola';
+// window.test = 'hola';
+```
+
+## Lecturas
+
+- [window scroll](https://developer.mozilla.org/es/docs/Web/API/Window/scroll)

@@ -1,0 +1,120 @@
+---
+title: Tipos de variables en Javascript
+date: "2021-10-01"
+tags: ["variables"]
+language: javascript
+---
+
+## Nombrar una Variable
+
+El nombre de una variable debe ser descriptivo y recordable.
+Javascript es Case Sensitive. `username != userName`.
+En Javascript se puede omitir el punto y coma.
+Como estándar, en Javascript los nombres de variables se escriben en camelCase.
+
+> Javascript no soporta kebab-case
+
+## Estilos de Escritura
+
+```javascript
+var userClickCount; // camelCase
+var UserClickCount; // PascalCase
+var user_click_count; // snake_case
+var user-click-count; // kebab-case
+```
+
+Para nombrar una variable podemos usar todas las letras, en
+mayúsculas y minúsculas, los números, el guión bajo y el signo
+peso.
+
+- a-Z A-Z 0-9 \_ $
+
+> No se utiliza la ñ.
+>
+> No se utiliza el guión.
+>
+> No pueden iniciar con un número.
+
+```javascript
+var niños = '';
+var 1nino = ''; // wrong
+var ninos-clase = ''; // wrong
+var _ninos = '';
+var $ninos = '';
+var &ninos = ''; // wrong
+var NINOS = '';
+```
+
+Una variable es un espacio en memoria reservado
+temporalmente y que puede almacenar un dato con la
+finalidad de ser accedido posteriormente durante la ejecución
+de nuestro código.
+
+Una variable se define
+
+utilizando la palabra reservada `var`.
+
+```javascript
+var role;
+
+var firstName = "Eduardo";
+var lastName = "Bacon";
+```
+
+## Variables Gobales
+
+Javascript posee una serie de API accesibles de manera global, están son de gran utilidad, entregándonos información sobre el entorno de nuestro app y permitiéndonos interactuar con él.
+
+## Casteando Variables
+
+¿Cómo transformar un valor de un tipo a otro?
+
+```javascript
+const stringfied = String(22); // 20
+const numericfied = Number("11"); // 11
+
+const stringfiedShortcut = 22 + ""; // "22"
+const numericfiedShortcut = +"23"; // 23
+```
+
+## Redefinir una Variable
+
+Al volver a asignar un valor a una variable sin usar la palabra `var`, el contenido es reemplazado.
+
+```javascript
+var helloWorld = "Hola mundo";
+
+console.log(helloWorld); // Hola mundo
+
+helloWorld = "Hello World";
+
+console.log(helloWorld); // Hello World
+```
+
+## Tipo de Variable
+
+Javascript, al ser de `tipado dinámico`,el tipo de variable se ve modificado si asignamos un valor de un tipo diferente.
+
+```javascript
+var customVar = "1";
+
+console.log(typeof customVar); // String
+
+customVar = 1;
+
+console.log(typeof customVar); // Number
+```
+
+## Const - let
+
+El uso de la declaración mediante var, en algunos casos, generaba comportamientos de complejo rastreo, así que gracias a ECMAScript se añadieron 2 tipos de declaraciones de
+variable:
+
+`CONST`: Variables no reasignables, pero no inmutables.
+`LET`: Variables reasignables.
+
+```javascript
+const obj = { reasignable: false, inmutable: false };
+obj = { nuevo: true }; // ERROR
+obj.reasignables = true; // { reasignable: true, inmutable: false }
+```

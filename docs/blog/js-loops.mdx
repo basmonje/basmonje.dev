@@ -1,0 +1,104 @@
+---
+title: Bucles en Javascript
+date: "2021-10-01"
+tags: ["bucles"]
+language: javascript
+---
+
+Los arrays son un tipo de variable que nos permite listar elementos.
+Javascript al no estar preocupado del tipo, permite añadir valores al array, sin importar su tipo.
+
+```js
+const arr = ["Enero", "Febrero", "Marzo"];
+const arr2 = [1, null, arr, "Abril"];
+```
+
+## Arrays position
+
+Un array nos permite interactuar con los elementos que posee.
+
+Una forma de obtener o almacenar información de un elemento del arreglo es mediante su posición.
+
+```javascript
+const arr = [0, 1, 2, 3, , 5];
+```
+
+```javascript
+const arr = ["Enero", "Febrero", "Marzo"];
+const elem2 = arr[1]; // 'Febrero'
+arr[2] = "Potato";
+console.log(arr); // 'Enero', 'Febrero', 'Potato'
+```
+
+## Recorrer un arreglo
+
+Al ser una lista, un array puede ser recorrido e interactuar con cada uno de los elementos en cada posición de la lista.
+
+Existen diferentes métodos para esto, los principales que ofrece Javascript son diferentes alternativas de ciclos for.
+
+```javascript
+const arr = ["Enero", "Febrero", "Marzo"];
+for (let i = 0; i < arr.length; i++) {
+  console.log("El mes seleccionado es ", arr[i]); // 'Enero', 'Febrero', 'Potato'
+}
+****const new = []****
+```
+
+El ciclo for mas basico realiza 3 acciones:
+
+1. Crea una variable, en este caso index, y la inicializa en 0, debido a que esta es la primera posición que queremos que revise.
+
+2. Declara que index no podrá ser mayor que el largo de nuestro array.
+
+3. En cada iteración aumentará en 1 el valor de index.
+
+## For ... of
+
+Otra forma de recorrer un array es mediante el ciclo for… of, donde mediante una simple instrucción, recorrerá el array devolviendonos en cada iteración el elemento de correspondiente.
+
+Con este ciclo no se encuentra disponible directamente el index del elemento.
+
+```javascript
+const array = ["Enero", "Febrero", "Marzo"];
+
+for (let element of array) {
+  console.log(element);
+}
+```
+
+Para el ciclo for...of se declara una variable que almacenará el elemento del array, en conjunto del array a recorrer.
+
+El ciclo recorrerá el array devolviendonos el elemento de la posición, hasta que ya no queden elementos en el array.
+
+## Métodos de un array
+
+Un array posee métodos que nos ayudan a trabajar sobre el mismo array.
+
+- **push** - añade un nuevo elemento al final del array.
+- **unshift** - añade un nuevo elemento al inicio del array.
+- **pop** - corta y nos devuelve el último elemento del array.
+- **shift** - corta y nos devuelve el primer elemento del array.
+- **splice** - elimina elementos del array y los devuelve.
+- **indexOf** - nos devuelve el índice de un elemento específico.
+
+```javascript
+const array = ["Enero", "Febrero"];
+
+array.push("Marzo");
+// array === ['Enero', 'Febrero', 'Marzo']
+array.unshift("Diciembre");
+// array === ['Diciembre', 'Enero', 'Febrero', 'Marzo']
+const popped = array.pop();
+// popped = 'Marzo'
+// array === ['Diciembre', 'Enero', 'Febrero']
+const shifted = array.shift();
+// shifted = 'Diciembre'
+// array === ['Enero', 'Febrero']
+const i = array.indexOf("Febrero");
+// i = 1;
+const spliced = array.splice(i, 1);
+// i => posicion desde donde cortar
+// i => cantidad de elementos a cortar
+// spliced === 'Febrero'
+// arr === ['Enero']
+```

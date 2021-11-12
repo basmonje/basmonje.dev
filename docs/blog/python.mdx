@@ -1,0 +1,231 @@
+---
+title: Python
+date: '2021-10-01'
+tags: ["data_science"]
+---
+
+## Ciencia de datos
+
+- [Top 10 Data Science Projects for Beginners](https://towardsdatascience.com/top-10-data-science-projects-for-beginners-a2feb5e2153e)
+- [the easy way to see your data](https://www.graphext.com/)
+- [Análisis y visualización de datos usando Python](https://datacarpentry.org/python-ecology-lesson-es/aio.html)
+- [Trabajando con Pandas DataFrames en Python](https://datacarpentry.org/python-ecology-lesson-es/02-starting-with-data/)
+
+# Biblioteca del Sistema Operativo
+
+# Obtener el directorio de trabajo actual
+
+Existen dos tipos de rutas, se les llaman `rutas relativas` y `rutas absolutas`.
+
+Una ruta absoluta se refiere a la misma ubicación en un sistema de archivos en relación con el `directorio de raíz "/"`.
+
+Una ruta relativa se refiere a una ubicación específica en un sistema de archivos en relación con el directorio de `trabajo actual`.
+
+```python
+import os
+
+# mostrar el directorio de trabajo actual
+path_absolute = os.getcwd()
+
+print(path_absolute)
+```
+
+# Mostrar el contenido del directorio
+
+Para ver los archivos dentro de nuestra carpeta de proyecto.
+
+```python
+import os
+
+_content = os.listdir()
+print(_content)
+```
+
+Incluso podemos ver el contenido dentro de una carpeta específica.
+
+```python
+array_files = os.listdir('your_folder_with_path_absolute')
+print(array_files)
+```
+
+# Uniendo rutas
+
+Concatenar en python es muy simple, sin embargo, cuando queremos trabajar con distintos sistemas operativos como windows, linus o mac, tenemos algunos problemas. Esto sucede porque Mac OS y linux utilizan la barra diagonal `/` mientras que windows utiliza la barra invertida `\`. Por suerte la libreria `os` nos ayudar a facilitar este proceso, con el metodo `os.path.join()`.
+
+```python
+import os
+
+rute_join = os.path.join(os.getcwd(), 'your_name_folder')
+print(rute_join)
+```
+
+# Crear nuevo directorio
+
+Crear carpetas no tiene mucha ciencia, solo debemos agregar:
+
+```python
+import os
+
+os.mkdir('Dataset')
+```
+
+# Renombrar el nombre de un archivo
+
+De manera similar a la creación de directorios, cambiar el nombre de los archivos es una tarea que podemos automatizar con un script de python.
+
+```python
+import os
+
+os.rename("Dataset", "data")
+```
+
+Incluso podemos cambiar el nombre de varios archivos dentro de un bucle.
+
+```python
+import os
+
+for i, file in os.listdir():
+    if file.endswith('.csv'):
+        os.rename(file, f'2021_{file}')
+```
+
+# Verificar archivo existente
+
+Puede revisar si un archivo o directorio existe o no con el módulo `os`.
+
+```python
+import os
+
+q = os.path.exists('data')
+print(q)
+```
+
+Como también podemos agregarlo en una condición.
+
+```python
+import os
+
+if os.path.exists('data'):
+    print('Si existe la carpeta o archivo')
+else:
+    print('Lo siento, no se encuentra lo que buscar')
+```
+
+# How to use Conda in Windows 10
+
+Crear una nuevo entorno de trabajo.
+Create a new environ of work.
+
+```
+conda create -n myenv python=3.6
+```
+
+Para activar entorno creado.
+
+```
+conda activate myenv
+```
+
+Para conseguir una lista de nuestros entornos creados.
+
+```
+conda env list
+```
+
+# FLask
+
+- [Primera aplicacion con flask](https://j2logo.com/leccion-1-la-primera-aplicacion-flask/)
+- [Tutorial Flask – Lección 17: Desplegar una aplicación Flask en producción con Nginx + Gunicorn](https://j2logo.com/tutorial-flask-leccion-17-desplegar-flask-produccion-nginx-gunicorn/)
+- [Enviar emails con Flask](https://j2logo.com/tutorial-flask-leccion-14-enviar-emails-con-flask/)
+
+# NLP
+
+- [Why You Should Care About Byte-Level Sequence-to-Sequence Models in NLP](https://medium.com/analytics-vidhya/https-medium-com-tomkenter-why-care-about-byte-level-seq2seq-models-in-nlp-26bcf05dd7d3)
+- [NLTK](https://www.nltk.org/)
+- [Tutorial de NLP con Python NLTK](https://likegeeks.com/es/tutorial-de-nlp-con-python-nltk/)
+- [Getting Started with Natural Language Processing using Python](https://www.analyticsvidhya.com/blog/2021/07/getting-started-with-natural-language-processing-using-python/)
+- [Construyendo un Chatbot simple desde cero en Python (usando NLTK)](https://planetachatbot.com/construyendo-chatbot-simple-desde-cero-en-python-usando-nltk/)
+
+## Proxy broker
+
+Buscar IP pública.
+
+```py
+curl ifconfig.me
+```
+
+```py
+curl ifconfig.me --proxy "-----.----.---"
+```
+
+## Date
+
+- [Python datetime: trabajando con fechas](https://www.aluracursos.com/blog/python-datetime-trabajando-con-fechas)
+
+# Lectura
+
+- [Astronomy in Python and foster an ecosystem](https://www.astropy.org/)
+- [Documentación disponible en Internet](https://www.mclibre.org/consultar/python/otros/documentacion.html)
+- [Python para Ingeniería Química](https://www.youtube.com/watch?v=IjdU9xYrbc8)
+- [Astro.py](https://www.astropy.org/)
+- [7 Common File System Operations You Can Do With Python](https://towardsdatascience.com/7-common-file-system-operations-you-can-do-with-python-e4670c0d92f2)
+- [mongoengine field-arguments](https://mongoengine-odm.readthedocs.io/guide/defining-documents.html#field-arguments)
+- [Python obtener la direccion ip publica](https://www.ks7000.net.ve/2018/01/22/python-obtener-la-direccion-ip-publica/)
+- [Como obtener la direccion ip publica](https://www.ks7000.net.ve/2018/01/22/python-obtener-la-direccion-ip-publica/)
+- [Escaneo de puertos](https://www.ediciones-eni.com/open/mediabook.aspx?idR=b574d5251bc0d828ac04213af2d8ce58)
+- [Servir archivos estáticos](https://j2logo.com/python/flask/servir-ficheros-y-contenido-estatico-con-flask/)
+- [Como hacer subtring en python](https://www.codigopiton.com/como-hacer-substring-en-python/)
+- [Guide to FlaskMongoEngine in Python](https://stackabuse.com/guide-to-flask-mongoengine-in-python/)
+- [Python task automation](https://github.com/python-engineer/python-task-automation)
+- [Everything you need to know - SPACY](https://spacy.io/usage/spacy-101)
+
+# Asistentes virtuales
+
+- [AI_Personal_Voice_Assistant_Using_Python / example](https://github.com/mmirthula02/AI-Personal-Voice-assistant-using-Python)
+- [Learn To Create AI Assistant (JARVIS) With Python || Udemy Course [Full Course]](https://www.youtube.com/watch?v=af9BF0Nu9ZQ)
+- [How to Create Your Virtual Assistant with Python in 2021 - #1](https://www.youtube.com/watch?v=JotriGSKgxo)
+- [Mila](https://github.com/limapedro/mila/tree/master)
+- [JARVIS](https://github.com/JaimeJGJG/JARVIS_2.0/blob/main/JARVIS_2.0.py)
+- [JARVIS 2](https://github.com/GauravSingh9356/J.A.R.V.I.S/blob/master/jarvis.py)
+- [Build your own Natural Language Processing based Intelligent Assistant using Python, It’s easy!](https://blog.xrds.acm.org/2017/01/build-natural-language-processing-based-intelligent-assistant-using-python-easy/)
+- [Implementation of a Contextual Chatbot in PyTorch.](https://github.com/python-engineer/pytorch-chatbot)
+- [Chat Bot With PyTorch - NLP And Deep Learning - Python Tutorial (Part 1)](https://www.youtube.com/watch?v=RpWeNzfSUHw)
+- [ERIS - Una inteligencia artificial automática.](https://github.com/Gabrilush/Eris-Project)
+- [How To Create A Chatbot with Python & Deep Learning In Less Than An Hour](https://towardsdatascience.com/how-to-create-a-chatbot-with-python-deep-learning-in-less-than-an-hour-56a063bdfc44)
+- [Simple-Python-Chatbot](https://github.com/jerrytigerxu/Simple-Python-Chatbot)
+- [Construyendo un Chatbot simple desde cero en Python (usando NLTK)](https://planetachatbot.com/construyendo-chatbot-simple-desde-cero-en-python-usando-nltk/)
+- [High Quality Audio with Python and PyAudio](https://dolby.io/blog/capturing-high-quality-audio-with-python-and-pyaudio)
+- [Listas por comprensión en Python](https://www.analyticslane.com/2019/09/23/listas-por-comprension-en-python/#:~:text=Listas%20por%20comprensi%C3%B3n%20en%20Python%201%20Sintaxis%20de,una%20construcci%C3%B3n%20sint%C3%A1ctica%20disponible%20que%20ofrece%20grandes%20posibilidades.)
+- [Unofficial Windows Binaries for Python Extension Packages](https://www.lfd.uci.edu/~gohlke/pythonlibs/#pyaudio)
+
+## Scrapper
+
+- [Manipulación de Navegadores](https://www.selenium.dev/documentation/es/webdriver/browser_manipulation/)
+- [Instagram scraper](https://github.com/realsirjoe/instagram-scraper)
+
+## Paralelismo
+
+- [Introducción de Paralelo y Concurrente a la Programación en Python](https://code.tutsplus.com/es/articles/introduction-to-parallel-and-concurrent-programming-in-python--cms-28612)
+
+## Logging
+
+- [Módulo logging de Python: cómo encontrar errores de código](https://www.ionos.es/digitalguide/paginas-web/desarrollo-web/logging-de-python/)
+- [Python logging](https://zetcode.com/python/logging/)
+
+## Email
+
+- [Envío de e-mail desde Python](https://uniwebsidad.com/libros/python/capitulo-14/envio-de-e-mail-desde-python)
+- [SIMPLE MAIL TRANSFER PROTOCOL](https://datatracker.ietf.org/doc/html/rfc821#section-1)
+
+## Arbol
+
+- [Recorrer árbol de directorios en Python](http://www.sromero.org/wiki/programacion/tutoriales/python/recorrer_arbol)
+
+## Automatizar
+
+- [Cómo automatizar un script de Python en Windows y Mac](https://anderfernandez.com/blog/automatizar-script-python-windows-mac/)
+
+## Tensorflow
+
+- [Text Classification with BERT Tokenizer and TF 2.0 in Python](https://stackabuse.com/text-classification-with-bert-tokenizer-and-tf-2-0-in-python)
+- [A Transformer Chatbot Tutorial with TensorFlow 2.0](https://blog.tensorflow.org/2019/05/transformer-chatbot-tutorial-with-tensorflow-2.html)

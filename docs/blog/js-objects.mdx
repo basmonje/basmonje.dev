@@ -1,0 +1,91 @@
+---
+title: Objetos en Javascript
+date: "2021-10-01"
+tags: ["object"]
+language: javascript
+---
+
+Un objeto es una variable que posee propiedades, estas se alojan bajo el sistema key - value, que nos permite llamar a un valor mediante su nombre o key.
+
+```javascript
+const user = {
+  name: "Eduardo",
+  age: 29,
+  email: "edu@gmail.com",
+};
+
+console.log(user.name); // 'Eduardo'
+user.email = "no-email";
+```
+
+## Objetos y métodos
+
+Un objeto puede poseer métodos, ayudándonos no sólo a juntar información común bajo un mismo nombre, también los métodos que afectan a esta información.
+
+```javascript
+const user = {
+    name: 'Eduardo',
+    email: 'edu@gmail.com'
+    status: 'LOGGED_IN',
+    isProfileCompleted() {
+        return false;
+    }
+}
+
+console.log(user.isProfileCompleted()); // false
+```
+
+Debido a que el método es invocado mediante la notación de punto, el método reconoce lo que esta anterior al punto como su entorno de ejecución y le asigna ese valor a this.
+
+```javascript
+const user = {
+    name: 'Eduardo',
+    email: 'edu@gmail.com'
+    status: 'LOGGED_IN',
+    isProfileCompleted() {
+        if (!this.name || !this.email || !this.status) {
+            return false;
+        }
+
+        return true;
+    }
+}
+
+console.log(user.isProfileCompleted()); // false
+```
+
+## objects
+
+Esto nos permite aproximar el diseño de nuestro código a lo que sería Programación Orientada a Objetos.
+
+O al menos así se hacía antes hasta que gracias a ECMAScript se añadieron las clases y extensiones a Javascript.
+
+## Objetos y Arreglos
+
+Un objeto es una variable que posee propiedades, cada una de esas propiedades puede almacenar un valor.
+
+Esto permite agrupar valores que se encuentran relacionados, asignando un nombre único (clave) a cada valor.
+
+Un arreglo es una lista de valores, una agrupación donde los valores no poseen una clave propia, únicamente su ubicación.
+
+```javascript
+// Objeto
+// Una variable que posee propiedades
+
+var lessonData = {
+  order: 1,
+  title: "Variables",
+  date: "12-07-2021",
+};
+
+// Un array que pose
+// Una variable que puede poseer un conjunto de valores
+
+var simpsonFamily = ["Homero", "Marge", "Bart", "Lisa", "Maggie"];
+
+// Acceder a valores
+
+console.log(lessonData.title); // "Variables"
+console.log(lessonData["date"]); // "12-07-2021"
+console.log(simpsonFamily[1]); // "Marge"
+```

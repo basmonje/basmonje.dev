@@ -1,0 +1,212 @@
+---
+title: Qué es Javascript
+date: "2021-10-02"
+tags: ["intro"]
+language: javascript
+---
+
+## Qué es Javascript?
+
+JavaScript un lenguaje de programación que comenzó a ser utilizado
+para dar dinamismo a las páginas web, era un lenguaje sencillo.
+
+Cuando hablábamos de JavaScript, hace un par de años pensábamos
+en usarlo solo para dar efectos a nuestra web, validar formularios,
+manipular los elementos HTML y estilos CSS como nosotros
+quisiéramos, hoy en día tenemos JavaScript para muchas cosas.
+
+- Desarrollo Web
+- Desarrollo Backend
+- Desarrollo de apps móviles
+- Desarrollo de apps de escritorio
+- VideoJuegos
+- Domótica
+- etc
+
+## Características de Javascript
+
+### Alto Nivel
+
+Es un lenguaje que ha sido construido sin necesidad de saber más detalles
+sobre el equipo que lo aloja. No es necesaria administración de memoria o
+saber qué tipo de procesador se esta ejecutando.
+
+### Tipado dinámico
+
+El tipo de una variable está asociado al valor de la variable y no a la
+variable en si, permitiendo así redefinir el tipo de variable con sólo
+reasignar un valor.
+
+### Tipado débil
+
+Permite operaciones entre variables de diferente tipo.
+
+### Interpretado
+
+Es un lenguaje que no requiere compilación, se ejecuta directamente
+en tiempo de ejecución.
+
+### Multiparadigma
+
+Es un lenguaje que soporte más de un estilo de programación,
+pudiendo así utilizarse de diferentes formas según la conveniencia
+del usuario.
+
+- POO (Orientado a objetos)
+- Funcional
+- Imperativa
+- Prototipos
+
+### Estandarizado
+
+Es un lenguaje que posee una aplicación estándar dentro de los múltiples
+navegadores disponibles, aún cuando cada uno posee su propio intérprete
+de Javascript (para ejecutarlo), todos poseen las mismas bases propuestas
+por la empresa ECMA International.
+
+ECMAScript es un estándar que evoluciona y añade nuevas características
+al lenguaje, buscando simplificar la vida de los desarrolladores con cada
+iteración.
+
+Gracias a esto todos los navegadores entienden un formato universal de
+Javascript, aunque eso no quiere decir que en todos tenga el mismo
+rendimiento.
+
+## Transpilador
+
+Un `transpilador` es una librería de código que tranforma nuestro código a una versión más antigua, asegurando compatibilidad con los diferentes intérpretes de Javascript presentes en los distintos navegadores.
+
+## En servidor NODEJS
+
+En esta versión javascript no utiliza el navegador como intérprete, posee su propio cliente que le permite ejecutarse como código del servidor.
+
+Esta versión funciona sólo en el servidor y no interactúa sobre el DOM.
+
+## NodeJs
+
+El 2009 se crea NodeJS, es un entorno de programación que permite utilizar Javascript sin depender del navegador.
+
+Esta a esta tecnología a quién le debemos la actual capacidad de Javascript de estar en todos tipo de proyecto, acelerando su desarrollo gracias a Frameworks que agilizan el desarrollo tanto en frontend como backend.
+
+Aunque fue creada el 2009, esta tecnología recién madura el 2015, siendo desde ya su creciente popularidad.
+
+## Cómo funciona Javascript
+
+Javascript funciona en un solo hilo, ejecutando tareas una a la vez.
+
+El orden de ejecución es el mismo que el orden de como está escrito nuestro código.
+
+Las tareas asíncronas, o que no puede resolver al mismo tiempo que las lee y carga, quedan en una lista de “pendientes”, que se reintegran al hilo de ejecución cuando su resolución está lista.
+
+## Arrancar Primer Saludo
+
+Para trabajar en Javascript y llegar a ejecutarlo, necesitamos del intérprete.
+Para eso nuestro código se adiciona a un archivo html.
+
+```html:index.html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // =================================
+      // Aquí va código Javascript
+      // =================================
+    </script>
+  </body>
+</html>
+```
+
+## Manejando errores en Javascript
+
+En este código definimos dos
+variables.
+
+Mediante console.log, le pedimos al navegador que nos muestre por consola los valores en cada variable.
+
+Como la página no posee contenido HTML, el documento se visualizará en blanco.
+
+```html
+<script>
+  var firstVar;
+  var helloWorld = "Hola mundo";
+
+  console.log(firstVar);
+  // Undefined
+
+  console.log(helloWorld);
+  // Hola mundo
+</script>
+```
+
+## ECMAScript: use strict
+
+Javascript debido a su tipado débil, entre otras cosas, permite operaciones que lenguajes de tipado fuerte no. Esto abre el espectro a operaciones posibles que no entregan un resultado específico generando un “error silencioso”.
+
+Con la adición de “uso estricto”, Javascript ahora reconoce estos casos como errores, avisando al desarrollador.
+
+```javascript
+var firstName = "Eduardo",
+  firstName = "El Barto";
+console.log(firstName); // 'Bart'
+console.log(firstName); // 'El Barto'
+```
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      "use strict";
+      console.log("RUNNNING !");
+    </script>
+  </body>
+</html>
+```
+
+## Archivo externo
+
+Permite añadir y ejecutar el código de múltiples archivos js.
+
+Su inclusión es en orden de lectura, y en ese mismo orden se realiza su ejecución.
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Clase 2</title>
+    <link rel="stylesheet" href="script.js" />
+  </head>
+  <body></body>
+</html>
+```
+
+## Otras guías
+
+- [Everything you need to master JavaScript](https://vanillajsguides.com/complete-set/)
+- [JavaScript Algorithms and Data Structures](https://www.freecodecamp.org/learn/javascript-algorithms-and-data-structures/)
+- [The Modern JavaScript Tutorial](https://javascript.info/)
+- [Curso Javascript bluuweb](https://bluuweb.github.io/javascript/#preguntas-y-respuestas)
+- [Code this, not that - JavaScript](https://github.com/codediodeio/code-this-not-that-js)
+- [Manual de JavaScript: Objetos del navegador](http://www.estrellateyarde.org/manual-de-javascript/manual-de-javascript-objetos-del-navegador)
+- [Web fundamental](https://developers.google.com/web/fundamentals?hl=es)
+- [Practica Regex](https://regexr.com/)
+- [5 Best Task Runner & Module Bundler Front-end Development Tools](https://www.uplers.com/blog/5-best-task-runner-module-bundler-front-end-development-tools/)
+- [40 JavaScript Projects for Beginners – Easy Ideas to Get Started Coding JS](https://www.freecodecamp.org/news/javascript-projects-for-beginners/#how-to-create-a-sidebar)
+- [Estado de javascript](https://2019.stateofjs.com/)
+- [Tutorial Javascript](https://www.arkaitzgarro.com/javascript/index.html)
+- [Tipos en Javascript sin Typescript/Flow](https://yeisondaza.com/tipos-en-javascript-sin-typescript)

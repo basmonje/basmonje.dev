@@ -1,0 +1,37 @@
+---
+title: Almacenamiento interno
+date: '2021-10-01'
+tags: ['javascript', 'storage']
+---
+
+Esta interfaz nos permite almacenar información y hacerla perdurar en el navegador.
+
+Debemos considerar que toda la información que almacenamos en las variables es volátil, se pierde si el navegador se recarga, en cambio el storage nos permite guardar información aún después de refrescar la ventana/navegador.
+
+## Local vs session
+
+Existen 2 formas básicas de almacenar información, ya sea en el localStorage o en el sessionStorage, ambos poseen las mismas propiedades y métodos, sólo varían en cuanto hacen perdurar la información. localStorage, mantiene la información hasta que se decida eliminarla. sessionStorage, mantiene la información mientras la pestaña/ventana se encuentre abierta. En ambos casos, se tiene un límite de aprox. 5mb de capacidad, dependiendo del navegador.
+
+```javascript
+// obtener el elemento con clase 'some-key'
+localStorage.getItem('some-key);
+
+// guarda la informacion bajo la clase 'some-key'
+localStorage.setItem('some-key');
+
+// elimina el elemento con la clase 'some-key'
+localStorage.removeItem('some-key-);
+
+// elimina todos los elementos de localStorage
+localStorage.clear();
+```
+
+La información se almacena en formato String, siendo necesaria parsear los datos recibidos.
+
+```javascript
+localStorage.setItem('some-key', 1234);
+
+const someNum = localStorage.getItem('some-num');
+console.log(someNum); // 1234 as String
+console.log(JSON.parse(someNum)); // 1234 as Number
+```

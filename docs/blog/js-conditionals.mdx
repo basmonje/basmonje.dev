@@ -1,0 +1,44 @@
+---
+title: Condicionales en Javascript
+date: "2021-10-01"
+tags: ["conditionals"]
+language: javascript
+---
+
+Las condicionales son una forma de evaluar resultados, así poder diferenciar valores de variables que se generan en base a cálculos que nuestro sistema debe realizar o la interacción del usuario.
+
+```javascript
+const totalStudents = 50;
+const loggedInStudents = 20;
+
+if (loggedInStudents === 50) {
+  console.log("Todos los estudiantes se encuentran logeados");
+}
+```
+
+## Condicionales alternativas
+
+Si queremos evaluar un resultado usando la sentencia `if`, si queremos dar una alternativa de ejecución cuando la comparación no es efectiva, usamos la sentencia `if - else` y por último, si queremos realizar múltiples comparaciones tenemos la sentencia `if - else` `if - else`
+
+```javascript
+const myAge = 26;
+
+if (myAge > 65) {
+  console.log("Usted puede jubilarse");
+} else if (myAge > 18) {
+  console.log("Usted es mayor de edad");
+} else {
+  console.log("Usted es menor de edad");
+}
+```
+
+# Operador condicional ternario
+
+Es una forma corta de realizar una evaluación condicional, donde se realiza la evaluación y se tienen 2 alternativas, una en el caso del `true` y otra en el caso del `false`:
+
+```javascript
+const myAge = 26;
+
+const myAgeStatus = myAge > 18 ? "Soy mayor de edad" : "Soy menor de edad";
+console.log(myAgeStatus); // "Soy mayor de edad"
+```
