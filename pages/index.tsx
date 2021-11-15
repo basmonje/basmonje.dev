@@ -11,7 +11,7 @@ export default function HomePage({ posts }) {
     <Layout title="Home">
       <Hero />
 
-      <section className="--p-t-100 --p-b-100">
+      <section className="--p-t-100 --p-b-100" id="recently-post">
         <Container size="thin">
           <div className="--p-3">
             <div className="--p-x-2 --flex --flex-col">

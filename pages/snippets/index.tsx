@@ -4,47 +4,26 @@ import { GetStaticProps } from "next";
 
 import List, { ListProps } from "../../components/ListDocs";
 import { Button, Container } from "@basmonje/quarks_ui";
-import { useState, useEffect, useCallback } from "react";
-import { format, search } from "../../lib/search";
 
+import useSearch from "../../hooks/useSearch";
 import Link from "next/link";
 
 export default function SnippetsPage({ posts }: ListProps) {
-  const [postsList, setPosts] = useState([]);
-  const [query, setQuery] = useState("");
-
-  useEffect(() => {
-    if (posts) {
-      setPosts(posts);
-    }
-  }, [posts, setPosts]);
-
-  const handleChange = useCallback((e) => {
-    const query = format(e.target.value);
-    setQuery(query);
-
-    if (query.length) {
-      const response = posts.filter((post) => search(post.title, query));
-      setPosts(response);
-    } else {
-      setPosts(posts);
-    }
-  }, []);
+  const { query, result, handleChange } = useSearch({ posts });
 
   return (
     <Layout title="Home">
       <section className="--p-4">
         <Container size="thin">
-          <div className="--flex --flex-col --mt-100 --mb-100">
-            <div className="--flex --flex-row --content-between --gap-xs">
+          <div className="--flex --flex-col">
+            <div className="--flex --flex-row --content-between --gap-xs --p-2">
               <input
-                className="--border-gray-1 --border-xs --radius-small --bg-gray-7 --p-y-1 --p-x-2 --w-full"
+                className="--bg-trans --td-text-gray-3 --border-gray-5 --border-xs --radius-small --bg-gray-7 --p-3 --w-full"
                 type="text"
                 placeholder="Filtrar busqueda"
                 value={query}
                 onChange={handleChange}
               />
-              <Button>Filtrar</Button>
             </div>
           </div>
         </Container>
@@ -52,8 +31,8 @@ export default function SnippetsPage({ posts }: ListProps) {
       <section className="--p-x-3 --p-b-100">
         <Container size="thin">
           <div className="--flex --flex-col --gap-md --m-x-2">
-            {postsList.length !== 0 ? (
-              postsList.map((post, index) => (
+            {result.length !== 0 ? (
+              result.map((post, index) => (
                 <Link href={`/snippets/${post.slug}`} key={index}>
                   <a>
                     <div className="--p-2 --bg-gray-5">
