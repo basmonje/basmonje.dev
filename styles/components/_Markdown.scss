@@ -63,6 +63,7 @@
             border-top: 1px solid $gray-5;
             border-bottom: 1px solid $gray-5;
             overflow-x: auto;
+            scrollbar-width: thin;
 
             @media (min-width: $sm) {
                 border-radius: 4px;
