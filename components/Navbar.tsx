@@ -15,7 +15,7 @@ function Navbar({ list }: typeof defaultPropsNavbar) {
   useEffect(() => setMounted(true), []);
 
   return (
-    <header className="--position-sticky --index-1 --td-bg-gray-8 --tw-bg-gray-1 --top-none --p-x-2 --border-bottom-xs --tw-border-gray-2 --td-border-gray-7 --h-100">
+    <header className="--position-sticky --index-1 --td-bg-gray-8 --tw-bg-gray-1 --top-none --p-x-2 --h-100">
       <Container size="thin">
         <nav className="--flex --flex-row --items-center --content-between --p-y-2">
           <div className="--flex --items-center">

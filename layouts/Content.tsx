@@ -14,8 +14,14 @@ interface Props {
   frontmatter?: {
     title?: string;
     description?: string;
-    dateUpdate?: string;
+    date?: string;
     tags?: string[];
+    readingTime: {
+      text: string;
+      minutes: number;
+      time: number;
+      words: number;
+    };
   };
 }
 
@@ -37,7 +43,20 @@ export default function ContentLayout({ children, frontmatter, type }: Props) {
                 <h1 className="--text-2xl --text-height-2xl --text-md-3xl --text-md-height-3xl">
                   {frontmatter.title}
                 </h1>
-                <p className="text-sm text-thin">{frontmatter.dateUpdate}</p>
+                <div className="--flex --flex-col --flex-xs-row --items-xs-center --content-between --p-y-3">
+                  <div className="--flex --items-center --gap-xs">
+                    <span className="--text-small --tw-text-gray-3 --text-height-small --text-weight-5">
+                      Bastian Monje
+                    </span>
+                    ~
+                    <span className="--text-small --tw-text-gray-3 --text-height-small --text-weight-5">
+                      {frontmatter.date}
+                    </span>
+                  </div>
+                  <p className="--text-small --tw-text-gray-3 --text-height-small --text-weight-5">
+                    {frontmatter.readingTime.text}
+                  </p>
+                </div>
               </div>
             </Container>
           </div>

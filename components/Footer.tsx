@@ -42,7 +42,7 @@ const defaultPropsFooter = {
 };
 function Footer({ social, sitemap }: typeof defaultPropsFooter) {
   return (
-    <footer className="--border-top-xs --border-gray-2 --mb-5 --p-x-2">
+    <footer className="--border-top-xs --td-border-gray-7 --mb-5 --p-x-2">
       <Container size="thin">
         <div className="--m-y-5 --flex --flex-col --flex-xs-row --content-between">
           <FooterList list={social} external />
