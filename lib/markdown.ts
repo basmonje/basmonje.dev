@@ -2,6 +2,7 @@ import { join } from "path";
 import { readdirSync, readFileSync } from "fs";
 import matter from "gray-matter";
 
+import readingTime from 'reading-time'
 import { bundleMDX } from "mdx-bundler";
 import remarkGfm from "remark-gfm";
 import rehypeSlug from "rehype-slug";
@@ -80,6 +81,7 @@ export async function getFileBySlug(type: string, slug: string): Promise<object>
   return {
     code,
     frontmatter: {
+      readingTime: readingTime(source),
       slug: slug || null,
       ...frontmatter,
     },
