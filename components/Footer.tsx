@@ -44,11 +44,18 @@ function Footer({ social, sitemap }: typeof defaultPropsFooter) {
   return (
     <footer className="--border-top-xs --td-border-gray-7 --mb-5 --p-x-2">
       <Container size="thin">
-        <div className="--m-y-5 --flex --flex-col --flex-xs-row --content-between">
-          <FooterList list={social} external />
+        <div className="--m-y-5 --flex --flex-col --flex-xs-row --gap-sm --items-center --content-center --content-md-between">
+          <div className="--flex --flex-col --gap-lg">
+            <span className="--text-small --text-weight-5 --td-text-gray-5 --text-height-small">
+              REDES
+            </span>
+            <FooterList list={social} external />
+          </div>
 
           <div className="--flex --flex-col --gap-lg">
-            <span className="--text-small">Sitemap</span>
+            <span className="--text-small --text-weight-5 --td-text-gray-5 --text-height-small">
+              SITEMAP
+            </span>
             <FooterList list={sitemap} />
           </div>
         </div>
@@ -68,7 +75,7 @@ interface ListProps {
 function FooterList({ list, external = false }: ListProps) {
   const Anchor = external ? ExternalLink : InternalLink;
   return (
-    <div className="footer__list">
+    <div className="--flex --flex-col --gap-sm">
       {list &&
         list.map((item, index) => (
           <ul key={index} className="--flex --flex-col --gap-xs">

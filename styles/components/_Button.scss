@@ -20,6 +20,14 @@
     }
 }
 
+.--button-cursor {
+    cursor: pointer;
+}
+
+.--button-disabled {
+    cursor: not-allowed;
+}
+
 .--button-reset {
     border: none;
     cursor: pointer;

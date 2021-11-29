@@ -191,6 +191,18 @@ $listOverflow: (
             overflow: $value;
         }
     }
+
+    @each $name, $value in $listOverflow {
+        &-x-#{$name} {
+            overflow-x: $value;
+        }
+    }
+
+    @each $name, $value in $listOverflow {
+        &-y-#{$name} {
+            overflow-y: $value;
+        }
+    }
 }
 
 .--index-1 {

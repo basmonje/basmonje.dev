@@ -2,14 +2,16 @@ import Layout from "../../layouts";
 import { getAllFilesFrontMatter } from "../../lib/markdown";
 import { GetStaticProps } from "next";
 
-import List, { ListProps } from "../../components/ListDocs";
-import { Button, Container } from "@basmonje/quarks_ui";
+import { ListProps } from "../../components/ListDocs";
+import { Container } from "@basmonje/quarks_ui";
 
 import useSearch from "../../hooks/useSearch";
 import Link from "next/link";
 
 export default function SnippetsPage({ posts }: ListProps) {
   const { query, result, handleChange } = useSearch({ posts });
+
+  console.log(result);
 
   return (
     <Layout title="Home">
@@ -35,15 +37,23 @@ export default function SnippetsPage({ posts }: ListProps) {
               result.map((post, index) => (
                 <Link href={`/snippets/${post.slug}`} key={index}>
                   <a>
-                    <div className="--p-2 --bg-gray-5">
-                      <h1 className="--td-text-gray-2">{post.title}</h1>
+                    <div className="--p-3 --tw-bg-gray-2 --td-bg-gray-7 --flex --flex-col --gap-xs">
+                      <h1 className="--text-medium --tw-text-gray-7 --td-text-gray-2">
+                        {post.title}
+                      </h1>
+                      <p className="--text-small --text-weight-1 --text-gray-5">
+                        {post.language}
+                      </p>
                     </div>
                   </a>
                 </Link>
               ))
             ) : (
               <div className="--p-2">
-                <h1>No se ha podido encontrar</h1>
+                <h5 className="--text-small --text-weight-1">
+                  No se ha podido encontrar:{" "}
+                  <span className="--text-weight-8">{query}</span>
+                </h5>
               </div>
             )}
           </div>
