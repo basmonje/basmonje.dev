@@ -1,22 +1,3 @@
-@import "./config/variables";
-@import "./config/maps";
-@import "./config/mixins";
-@import "./config/functions";
-
-@import "./config/display";
-@import "./config/colors";
-@import "./config/padding";
-@import "./config/margin";
-@import "./config/border";
-@import "./config/type";
-@import "./config/reset";
-
-@import "./components/Container";
-@import "./components/Card";
-@import "./components/Button";
-@import "./components/Markdown";
-
-.border-hover {
-    transition: all 0.2s ease;
-    transform: scale(1.125);
+html {
+    font-family: "Open Sans", sans-serif;
 }
