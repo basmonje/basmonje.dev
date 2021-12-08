@@ -1,13 +1,8 @@
 import type { AppProps } from "next/app";
-import { ThemeProvider } from "../hooks/useTheme";
 
 import "../styles/global.scss";
-
+import "@basmonje/quarks_styles/dist/main.css";
 
 export default function App({ Component, pageProps }: AppProps) {
-  return (
-    <ThemeProvider attribute="class">
-      <Component {...pageProps} />
-    </ThemeProvider>
-  );
+  return <Component {...pageProps} />;
 }
