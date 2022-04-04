@@ -1,5 +1,5 @@
 import { ThemeProvider } from "next-themes";
-import "@wad/styles";
+import "@uren/styles";
 import "../src/styles/main.css";
 
 import ErrorBoundary from "../src/components/ErrorBoundary";
