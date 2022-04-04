@@ -1,0 +1,38 @@
+---
+title: "Formateador de fechas"
+publishedAt: "2019-02-09"
+summary: "Configuración de utilidad para manejar fechas"
+keywords: "Javascript Date Utilities"
+---
+
+```js:date.js
+const MONTHS = [
+  "Ene",
+  "Feb",
+  "Mar",
+  "Abr",
+  "May",
+  "Jun",
+  "Jul",
+  "Agos",
+  "Sept",
+  "Oct",
+  "Nov",
+  "Dic",
+];
+
+function ensureDateInstance(date) {
+  if (typeof date === "string") {
+    date = date.split(",");
+    return new Date(date[0], date[1], date[2], date[3], date[4], date[5]);
+  }
+  return date;
+}
+
+export function formatDate(date) {
+  date = ensureDateInstance(date);
+  const monthName = MONTHS[date.getMonth()];
+  return `${date.getHours()}:${date.getMinutes()} ${monthName} ${date.getDate()}, ${date.getFullYear()}`;
+}
+
+```

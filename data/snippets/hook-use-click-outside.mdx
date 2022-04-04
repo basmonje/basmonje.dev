@@ -1,0 +1,40 @@
+---
+title: "Hook useClickOutside para React"
+publishedAt: "2019-02-09"
+summary: "Este hook nos ayuda a saber cuando el cliente hace click fuera del elemento que hemos activado desencadenando un evento (función)"
+keywords: "Hooks React Javascript"
+---
+
+Crear un nuevo archivo `useClickOutside.js` y agregar el siguiente código.
+
+```js:useClickOutside.js
+import { useRef, useEffect } from "react";
+
+const useOnClickOutside = (handler) => {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    const listener = (event) => {
+      if (!ref.current || ref.current.contains(event.target)) {
+        return;
+      }
+
+      handler(event);
+    };
+
+    document.addEventListener("mousedown", listener);
+    document.addEventListener("touchstart", listener);
+
+    return () => {
+      document.removeEventListener("mousedown", listener);
+      document.removeEventListener("touchstart", listener);
+    };
+  }, [ref, handler]);
+
+  return {
+    ref,
+  };
+};
+
+export default useOnClickOutside;
+```
