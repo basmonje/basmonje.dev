@@ -4,7 +4,7 @@ import Projects from "../src/components/Projects";
 
 const HomePage = () => {
   return (
-    <Container title="Home | basmonje">
+    <Container title="Bastián Monje">
       <Welcome />
       <Projects />
     </Container>

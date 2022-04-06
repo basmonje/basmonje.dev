@@ -14,7 +14,7 @@ const HomePage = ({ snippets }) => {
   );
 
   return (
-    <Container title="Fragmentos de código">
+    <Container title="Fragmentos de código - Bastián Monje">
       <HeroSnippets value={query} onChange={(e) => setQuery(e.target.value)} />
       <Snippets data={filteredBlogPost} />
     </Container>
