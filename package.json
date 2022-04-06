@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "start": "next start",
-    "build": "npm run build:feed && next build",
+    "build": "next build",
     "lint": "next lint",
     "build:feed": "node --experimental-json-modules ./scripts/rss.mjs && node ./scripts/sitemap.mjs"
   },
