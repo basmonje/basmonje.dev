@@ -4,9 +4,9 @@ import { useRouter } from "next/router";
 const Breadcrumb = ({ home }) => {
   const router = useRouter();
   return (
-    <section className="px-5">
+    <section className="px-5 mt-5">
       <div className="container container-sm">
-        <ul className="flex flex-wrap gap-1">
+        <ul className="flex flex-wrap gap-1 px-5">
           <li>
             <NextLink href={home.href}>
               <a className="decoration-none color-black-400 dark-color-white-400 text-link">

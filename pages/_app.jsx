@@ -1,4 +1,5 @@
 import { ThemeProvider } from "next-themes";
+
 import "@uren/styles";
 import "../src/styles/main.css";
 

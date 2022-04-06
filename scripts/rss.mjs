@@ -6,7 +6,7 @@ async function generate() {
   const feed = new RSS({
     title: "Bastian Monje",
     site_url: "https://basmonje.dev",
-    feed_url: "https://basmonje.dev/rss.xml",
+    feed_url: "https://basmonje.dev/feed.xml",
   });
 
   allSnippets.map((post) => {
@@ -18,7 +18,7 @@ async function generate() {
     });
   });
 
-  writeFileSync("./public/rss.xml", feed.xml({ indent: true }));
+  writeFileSync("./public/feed.xml", feed.xml({ indent: true }));
 }
 
 generate();
