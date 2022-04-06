@@ -37,7 +37,7 @@ const NavDarkTheme = () => {
       >
         {mounted && (
           <div className="flex items-center content-center color-black-800 dark-color-white-800">
-            {resolvedTheme === "dark" ? <Sun /> : <Moon />}
+            {resolvedTheme === "dark" ? <Sun strokeWidth={2} /> : <Moon strokeWidth={2} />}
           </div>
         )}
       </button>
