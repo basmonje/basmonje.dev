@@ -1,12 +1,12 @@
 {
   "name": "basmonje.dev",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "My Website",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",
     "start": "next start",
-    "build": "next build",
+    "build": "npm run build:feed && next build",
     "lint": "next lint",
     "build:feed": "node --experimental-json-modules ./scripts/rss.mjs && node ./scripts/sitemap.mjs"
   },
@@ -15,7 +15,7 @@
   "license": "ISC",
   "dependencies": {
     "@basmonje/lib-icon": "1.0.4",
-    "@uren/styles": "0.0.1",
+    "@uren/styles": "0.0.2",
     "contentlayer": "0.1.2",
     "next": "12.1.1",
     "next-contentlayer": "0.1.2",
