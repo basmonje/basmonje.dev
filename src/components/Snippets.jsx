@@ -37,7 +37,7 @@ const CardSnippet = ({ slug, title, summary }) => (
 );
 
 export const Snippets = ({ data }) => (
-  <section className="px-5 mb-6">
+  <section className="px-5 mb-8">
     <div className="container container-sm">
       <div className="flex flex-col gap-1">
         {!data.length && (
