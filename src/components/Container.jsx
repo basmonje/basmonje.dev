@@ -10,7 +10,7 @@ const Container = (props) => {
   const { children, ...customMeta } = props;
   const meta = {
     title: "Basmonje",
-    description: "Fullstack developer, I love Javascript ♥",
+    description: "Fullstack developer, I ♥ Javascript",
     image: "https://basmonje.dev/static/img/banner.png",
     type: "website",
     ...customMeta,
