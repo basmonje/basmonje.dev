@@ -81,3 +81,8 @@ ul {
 .pointer {
   cursor: pointer;
 }
+
+.card-project:hover {
+  transition: 0.2s ease-in-out;
+  transform: translateY(-0.15rem);
+}

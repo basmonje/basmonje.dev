@@ -1,4 +1,4 @@
-import { ExternalLink } from "@basmonje/lib-icon";
+import { ExternalLink, Folder } from "@basmonje/lib-icon";
 import format from "../utils/format";
 
 const getProjects = () => [
@@ -31,16 +31,15 @@ const Card = ({ title, summary, urls, publishedAt }) => (
     rel="noopener noreferrer"
     className="decoration-none flex gap-1 color-black-600 dark-color-white-600 color-hover-black-800 dark-color-hover-white-800 text-link text-zoom"
   >
-    <article className="w-full flex flex-col radius-2 gap-2 content-between bg-hover-black-50 dark-bg-hover-white-50">
+    <article className="w-full flex flex-col radius-2 gap-2 content-between bg-black-50 dark-bg-white-100 card-project">
       <header className="flex flex-col gap-1 p-5">
-        <div className="flex content-between">
-          <h5 className="text-title-6 color-black-700 dark-color-white-700">
-            {title}
-          </h5>
-          <span className="p-2 icon">
-            <ExternalLink strokeWidth={2} />
-          </span>
+        <div className="flex content-between color-black-800 dark-color-white-800 mb-3">
+          <Folder strokeWidth={2} width={32} height={32} />
+          <ExternalLink strokeWidth={2} />
         </div>
+        <h5 className="text-subtitle-1 color-black-700 dark-color-white-700">
+          {title}
+        </h5>
         <p className="text-body-2 color-black-600 dark-color-white-600">
           {summary}
         </p>
@@ -62,7 +61,7 @@ const Projects = () => {
             Proyectos
           </h4>
         </header>
-        <ol className="grid grid-cols-1 grid-sm-cols-2 gap-1">
+        <ol className="grid grid-cols-1 grid-sm-cols-2 gap-2">
           {projects.map((otherProps) => (
             <Card key={otherProps.id} {...otherProps} />
           ))}

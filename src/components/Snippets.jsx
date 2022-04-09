@@ -19,14 +19,9 @@ const CardSnippet = ({ slug, title, summary }) => (
     <a className="decoration-none outline-primary-400 color-black-400 color-hover-black-800 dark-color-white-400 dark-color-hover-white-800 text-zoom">
       <article className="flex flex-col gap-2 bg-hover-black-50 dark-bg-hover-white-50 radius-2 overflow-hidden">
         <header className="flex flex-col gap-1 p-5">
-          <div className="flex content-between items-center">
-            <h5 className="text-title-5 color-black-800 dark-color-white-800">
-              {title}
-            </h5>
-            <span className="p-2 icon">
-              <ExternalLink strokeWidth={2} />
-            </span>
-          </div>
+          <h5 className="text-title-5 color-black-800 dark-color-white-800">
+            {title}
+          </h5>
           <p className="text-body-2 color-black-600 dark-color-white-600">
             {summary}
           </p>
