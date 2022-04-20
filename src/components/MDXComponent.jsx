@@ -34,7 +34,7 @@ const Code = (props) => {
   }, [copied]);
 
   return (
-    <div className="pos-relative">
+    <div className="relative">
       <button
         className="button clipboard bg-dark p-3 radius-2 flex items-center content-center color-white-700 color-hover-white"
         onClick={click}
