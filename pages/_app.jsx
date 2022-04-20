@@ -1,7 +1,7 @@
 import { ThemeProvider } from "next-themes";
 
-import "@uren/styles";
-import "../src/styles/main.css";
+import "@basmonje/css";
+import "../src/styles/main.scss";
 
 import ErrorBoundary from "../src/components/ErrorBoundary";
 
