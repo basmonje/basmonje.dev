@@ -1,4 +1,3 @@
-import { ExternalLink } from "@basmonje/lib-icon";
 import NextLink from "next/link";
 
 export const Tags = ({ tags }) => (

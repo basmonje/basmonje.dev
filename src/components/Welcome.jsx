@@ -1,15 +1,15 @@
 const Welcome = () => (
-  <header className="px-5 py-8">
+  <header className="px-5 py-5 py-sm-8">
     <div className="container container-sm">
-      <div className="flex flex-col gap-2 px-5">
-        <h1 className="text-title-1 color-black-800 dark-color-white-800 text-wrap">
+      <div className="flex flex-col px-5">
+        <h1 className="text-title-2 text-sm-title-1 color-black-800 dark-color-white-800 text-wrap mb-4">
           Bastián Monje
         </h1>
-        <p className="text-subtitle-1 color-black-600 dark-color-white-600 text-wrap">
+        <p className="text-subtitle-1 color-black-600 dark-color-white-600 text-wrap  mb-4">
           Desarrollador independiendete y full-stack con sede en Concepción,
           tengo una gran pasión por aprender y crear servicios digitales.
         </p>
-        <p className="text-subtitle-1 color-black-600 dark-color-white-600 text-wrap">
+        <p className="text-subtitle-1 color-black-600 dark-color-white-600 text-wrap  mb-4">
           Enfocado en la lectura, el aprendizaje y construcción de librerías de
           componentes, sistemas de diseños y guías de estilos.
         </p>
