@@ -26,6 +26,10 @@ class MyDocument extends Document {
             type="font/woff2"
             crossOrigin="anonymous"
           />
+          <link href="/static/favicons/favicon.ico" rel="shortcut icon" />
+          <link href="/static/favicons/site.webmanifest" rel="manifest" />
+          <meta content="#000000eb" name="theme-color" />
+          <meta content="#000000eb" name="msapplication-TileColor" />
         </Head>
         <body className="dark-bg-black-900">
           <Main />
