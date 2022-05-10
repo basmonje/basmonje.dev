@@ -6,15 +6,16 @@
     "build": "next build",
     "lint": "next lint",
     "postbuild": "node --experimental-json-modules ./scripts/rss.mjs && node ./scripts/sitemap.mjs",
-    "build:feed": "node --trace-warnings --experimental-json-modules ./scripts/rss.mjs && node ./scripts/sitemap.mjs"
+    "build:feed": "node --trace-warnings --experimental-json-modules ./scripts/rss.mjs && node ./scripts/sitemap.mjs",
+    "buildoptions": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/rss.mjs && node ./scripts/sitemap.mjs"
   },
   "license": "ISC",
   "dependencies": {
-    "@basmonje/css": "1.0.1",
+    "@basmonje/css": "1.0.3",
     "@basmonje/lib-icon": "1.0.4",
-    "contentlayer": "0.1.2",
+    "contentlayer": "0.2.4",
     "next": "12.1.1",
-    "next-contentlayer": "0.1.2",
+    "next-contentlayer": "0.2.4",
     "next-themes": "0.1.1",
     "react": "17.0.2",
     "react-dom": "17.0.2",
