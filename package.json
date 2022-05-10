@@ -8,6 +8,8 @@
     "start": "next start",
     "build": "next build",
     "lint": "next lint",
+    "feed": "node --experimental-json-modules ./scripts/rss.mjs",
+    "sitemap": "node --experimental-json-modules ./scripts/sitemap.mjs",
     "build:feed": "node --trace-warnings --experimental-json-modules ./scripts/rss.mjs && node --trace-warnings --experimental-json-modules ./scripts/sitemap.mjs"
   },
   "keywords": [],
