@@ -8,8 +8,7 @@
     "start": "next start",
     "build": "next build",
     "lint": "next lint",
-    "build:feed": "node --experimental-json-modules ./scripts/rss.mjs && node ./scripts/sitemap.mjs",
-    "postbuild": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/rss.mjs && node ./scripts/sitemap.mjs"
+    "build:feed": "node --trace-warnings --experimental-json-modules ./scripts/rss.mjs && node --trace-warnings --experimental-json-modules ./scripts/sitemap.mjs"
   },
   "keywords": [],
   "author": "basmonje <devmonje@gmail.com>",
