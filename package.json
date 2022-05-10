@@ -1,19 +1,13 @@
 {
-  "name": "basmonje.dev",
-  "version": "1.0.2",
-  "description": "My Website",
-  "main": "index.js",
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "start": "next start",
     "build": "next build",
     "lint": "next lint",
-    "feed": "node --experimental-json-modules ./scripts/rss.mjs",
-    "sitemap": "node --experimental-json-modules ./scripts/sitemap.mjs",
-    "build:feed": "node --trace-warnings --experimental-json-modules ./scripts/rss.mjs && node --trace-warnings --experimental-json-modules ./scripts/sitemap.mjs"
+    "postbuild": "node --experimental-json-modules ./scripts/rss.mjs && node ./scripts/sitemap.mjs",
+    "build:feed": "node --trace-warnings --experimental-json-modules ./scripts/rss.mjs && node ./scripts/sitemap.mjs"
   },
-  "keywords": [],
-  "author": "basmonje <devmonje@gmail.com>",
   "license": "ISC",
   "dependencies": {
     "@basmonje/css": "1.0.1",
