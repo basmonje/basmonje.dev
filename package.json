@@ -6,8 +6,7 @@
     "build": "next build",
     "lint": "next lint",
     "postbuild": "node --experimental-json-modules ./scripts/rss.mjs && node ./scripts/sitemap.mjs",
-    "build:feed": "node --trace-warnings --experimental-json-modules ./scripts/rss.mjs && node ./scripts/sitemap.mjs",
-    "buildoptions": "NODE_OPTIONS='--experimental-json-modules' node ./scripts/rss.mjs && node ./scripts/sitemap.mjs"
+    "build:feed": "node --trace-warnings --experimental-json-modules ./scripts/rss.mjs && node ./scripts/sitemap.mjs"
   },
   "license": "ISC",
   "dependencies": {
