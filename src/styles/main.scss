@@ -1,5 +1,3 @@
-@import "mdx.scss";
-
 #__next {
   width: 100%;
   height: 100vh;
@@ -74,10 +72,6 @@ ul {
   transition: all 0.25s ease;
 }
 
-.card:hover {
-  transition: all 333ms ease 0s;
-}
-
 .pointer {
   cursor: pointer;
 }
@@ -85,4 +79,8 @@ ul {
 .card-project:hover {
   transition: 0.2s ease-in-out;
   transform: translateY(-0.15rem);
+}
+
+.card-project {
+  height: 180px;
 }

@@ -1,39 +1,6 @@
 import { ExternalLink, Folder } from "@basmonje/lib-icon";
 import format from "../utils/format";
 
-const config = [
-  {
-    id: 3,
-    title: "Mini Framework CSS",
-    summary: "Framework CSS de uso personal",
-    publishedAt: "2022/04/19",
-    urls: {
-      demo: null,
-      code: "https://github.com/basmonje/css",
-    },
-  },
-  {
-    id: 2,
-    title: "Shopping Vanilla",
-    summary: "Evaluación Final de Curso Javascript Master, Escalab Academy.",
-    publishedAt: "2021/11/13",
-    urls: {
-      demo: "https://basmonje.github.io/shopping_escalab/",
-      code: "https://github.com/basmonje/shopping_escalab",
-    },
-  },
-  {
-    id: 1,
-    title: "Replach",
-    summary: "Evaluación Final de curso de React Developer",
-    publishedAt: "2022/03/10",
-    urls: {
-      demo: "https://replach.vercel.app/",
-      code: "https://github.com/basmonje/replach",
-    },
-  },
-];
-
 const Card = ({ title, summary, urls, publishedAt }) => (
   <a
     href={urls.code}
@@ -67,13 +34,13 @@ const Projects = ({ data }) => (
   <section className="px-5 mb-10">
     <div className="container container-sm flex flex-col">
       <header className="mb-5 px-5">
-        <h4 className="text-title-4 color-black-800 dark-color-white-700">
-          Proyectos
+        <h4 className="text-title-5 color-black-800 dark-color-white-700">
+          {data.title}
         </h4>
       </header>
       {data && (
         <ol className="grid grid-cols-1 grid-sm-cols-2 gap-2">
-          {data.map((otherProps) => (
+          {data.data.map((otherProps) => (
             <Card key={otherProps.id} {...otherProps} />
           ))}
         </ol>
@@ -81,9 +48,5 @@ const Projects = ({ data }) => (
     </div>
   </section>
 );
-
-Projects.defaultProps = {
-  data: config,
-};
 
 export default Projects;

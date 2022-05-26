@@ -8,8 +8,10 @@ const nextConfig = {
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
+  i18n: {
+    locales: ["en-US", "es"],
+    defaultLocale: "en-US",
+  },
 };
 
-const { withContentlayer } = require("next-contentlayer");
-
-module.exports = withContentlayer(nextConfig);
+module.exports = nextConfig

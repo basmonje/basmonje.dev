@@ -1,9 +1,7 @@
 import Head from "next/head";
-
 import { useRouter } from "next/router";
 
 import Navbar from "./Navbar";
-import Footer from "./Footer";
 
 const Container = (props) => {
   const router = useRouter();
@@ -44,7 +42,6 @@ const Container = (props) => {
       <Navbar />
       <main id="skip" className="flex flex-col content-center">
         {children}
-        <Footer />
       </main>
     </>
   );

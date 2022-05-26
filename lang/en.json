@@ -1,0 +1,54 @@
+{
+  "header": {
+    "title": "Bastián Monje",
+    "content": [
+      "Freelance and full-stack developer based in Concepción, I have a great passion for learning and creating digital services.",
+      "Focused on reading, learning and building component libraries, design systems and style guides."
+    ]
+  },
+  "projects": {
+    "title": "Projects",
+    "data": [
+      {
+        "id": 3,
+        "title": "SCSS Framework",
+        "summary": "Light and easy to use",
+        "publishedAt": "2022/04/19",
+        "urls": {
+          "demo": null,
+          "code": "https://github.com/basmonje/css"
+        }
+      },
+      {
+        "id": 2,
+        "title": "Replach",
+        "summary": "Final evaluation for React Developer course",
+        "publishedAt": "2022/03/10",
+        "urls": {
+          "demo": "https://replach.vercel.app/",
+          "code": "https://github.com/basmonje/replach"
+        }
+      },
+      {
+        "id": 1,
+        "title": "Shopping Vanilla",
+        "summary": "Final evaluation of Javascript Master Course",
+        "publishedAt": "2021/11/13",
+        "urls": {
+          "demo": "https://basmonje.github.io/shopping_escalab/",
+          "code": "https://github.com/basmonje/shopping_escalab"
+        }
+      }
+    ]
+  },
+  "footer": {
+    "urls": {
+      "snippets": {
+        "label": "Snippets",
+        "href": "https://snippets.basmonje.dev/"
+      }
+    },
+    "content": "©2022 Basmonje. Build with",
+    "connector": "and"
+  }
+}
