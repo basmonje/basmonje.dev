@@ -1,12 +1,11 @@
 import dynamic from "next/dynamic";
-
-const Container = dynamic(() => import("components/Container"));
-const Welcome = dynamic(() => import("components/Welcome"));
-const Projects = dynamic(() => import("components/Projects"));
-const Footer = dynamic(() => import("components/Footer"));
-
 import { enUS, esES } from "../lang";
 import { useRouter } from "next/router";
+
+const Container = dynamic(import("components/Container"));
+const Welcome = dynamic(import("components/Welcome"));
+const Projects = dynamic(import("components/Projects"));
+const Footer = dynamic(import("components/Footer"));
 
 const HomePage = () => {
   const { locale } = useRouter();
