@@ -53,7 +53,7 @@ const Footer = ({ data }) => (
           </li>
         </ol>
       </div>
-      <span className="decoration-none color-black-700 dark-color-white-600 text-caption">
+      <span className="text-center decoration-none color-black-700 dark-color-white-600 text-caption">
         {data.content}{" "}
         <a
           title="Go to Next.js"
