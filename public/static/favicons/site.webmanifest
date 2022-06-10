@@ -1,6 +1,5 @@
 {
   "name": "Bastian Monje",
-  "short_name": "basmonje.dev",
   "icons": [
     {
       "src": "/static/favicons/android-chrome-192x192.png",
@@ -15,5 +14,6 @@
   ],
   "theme_color": "#000000eb",
   "background_color": "#000000eb",
-  "display": "standalone"
+  "display": "fullscreen",
+  "start_url": "https://basmonje.dev"
 }
