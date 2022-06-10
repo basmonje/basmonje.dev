@@ -32,12 +32,18 @@ const NavDarkTheme = () => {
   return (
     <div>
       <button
+        title="Toggle theme"
+        aria-label="Toggle dark and light theme"
         className="button-icon-square bg-transparent button p-3 text-button radius-2 bg-hover-black-50 dark-bg-hover-white-50 outline-primary-400"
         onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
       >
         {mounted && (
           <div className="flex items-center content-center color-black-800 dark-color-white-800">
-            {resolvedTheme === "dark" ? <Sun strokeWidth={2} /> : <Moon strokeWidth={2} />}
+            {resolvedTheme === "dark" ? (
+              <Sun strokeWidth={2} />
+            ) : (
+              <Moon strokeWidth={2} />
+            )}
           </div>
         )}
       </button>

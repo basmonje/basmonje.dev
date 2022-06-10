@@ -14,14 +14,14 @@ const Card = ({ title, summary, urls, publishedAt }) => (
           <Folder strokeWidth={2} width={32} height={32} />
           <ExternalLink strokeWidth={2} />
         </div>
-        <h5 className="text-subtitle-1 color-black-700 dark-color-white-700">
+        <h3 className="text-subtitle-1 color-black-800 dark-color-white-800">
           {title}
-        </h5>
+        </h3>
         <div className="flex flex-col content-between h-full">
-          <p className="text-body-2 color-black-600 dark-color-white-600">
+          <p className="text-body-2 color-black-700 dark-color-white-600">
             {summary}
           </p>
-          <time className="color-black-600 dark-color-white-600 text-simple">
+          <time className="color-black-700 dark-color-white-600 text-simple">
             {format({ date: publishedAt })}
           </time>
         </div>
@@ -34,14 +34,16 @@ const Projects = ({ data }) => (
   <section className="px-5 mb-10">
     <div className="container container-sm flex flex-col">
       <header className="mb-5 px-5">
-        <h4 className="text-title-5 color-black-800 dark-color-white-700">
+        <h2 className="text-title-5 color-black-800 dark-color-white-700">
           {data.title}
-        </h4>
+        </h2>
       </header>
       {data && (
         <ol className="grid grid-cols-1 grid-sm-cols-2 gap-2">
           {data.data.map((otherProps) => (
-            <Card key={otherProps.id} {...otherProps} />
+            <li key={otherProps.id}>
+              <Card {...otherProps} />
+            </li>
           ))}
         </ol>
       )}
