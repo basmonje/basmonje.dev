@@ -50,5 +50,9 @@
     },
     "content": "©2022 Basmonje. Desarrollado con",
     "connector": "y"
+  },
+  "notFound": {
+    "title": "404 - No hemos encontrado lo que buscas.",
+    "button": "Volver al inicio"
   }
 }
