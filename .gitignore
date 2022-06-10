@@ -2,8 +2,5 @@ dist
 node_modules
 .next
 package-lock.json
-ideas.md
 
-# Contentlayer
-.contentlayer
 NOTES.md
