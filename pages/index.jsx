@@ -1,7 +1,9 @@
-import Welcome from "../src/components/Welcome";
-import Container from "../src/components/Container";
-import Projects from "../src/components/Projects";
-import Footer from "../src/components/Footer";
+import dynamic from "next/dynamic";
+
+const Container = dynamic(() => import("components/Container"));
+const Welcome = dynamic(() => import("components/Welcome"));
+const Projects = dynamic(() => import("components/Projects"));
+const Footer = dynamic(() => import("components/Footer"));
 
 import { enUS, esES } from "../lang";
 import { useRouter } from "next/router";
@@ -9,6 +11,7 @@ import { useRouter } from "next/router";
 const HomePage = () => {
   const { locale } = useRouter();
   const data = locale === "en-US" ? enUS : esES;
+
   return (
     <Container title="Bastián Monje">
       <Welcome data={data.header} />
