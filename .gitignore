@@ -2,5 +2,5 @@ dist
 node_modules
 .next
 package-lock.json
-
+sitemap.xml
 NOTES.md

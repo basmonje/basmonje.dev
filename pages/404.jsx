@@ -9,7 +9,7 @@ export default function NotFound() {
   const { locale } = useRouter();
   const data = locale === "en-US" ? enUS : esES;
   return (
-    <Container title="404 - Bastián Monje">
+    <Container title="404 - Bastián Monje" navbar={data.navbar}>
       <section className="px-5 my-13">
         <div className="container container-sm flex flex-col gap-2 px-5">
           <h1>{data.notFound.title}</h1>
