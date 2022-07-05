@@ -1,11 +1,13 @@
 import { ExternalLink, Folder } from "@basmonje/lib-icon";
 import format from "../utils/format";
 
-const Card = ({ title, summary, urls, publishedAt }) => (
+const Card = ({ title, ariaLabel, summary, urls, publishedAt }) => (
   <a
     href={urls.code}
     target="_blank"
     rel="noopener noreferrer"
+    aria-label={ariaLabel}
+    title={ariaLabel}
     className="decoration-none flex gap-1 color-black-600 dark-color-white-600 color-hover-black-800 dark-color-hover-white-800 text-link text-zoom"
   >
     <article className="w-full flex flex-col radius-2 gap-2 content-between bg-black-50 dark-bg-white-100 card-project">

@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 
 const Container = (props) => {
   const router = useRouter();
-  const { children, ...customMeta } = props;
+  const { children, navbar, ...customMeta } = props;
   const meta = {
     title: "Basmonje",
     description: "Fullstack developer, I ♥ Javascript",
@@ -38,7 +38,7 @@ const Container = (props) => {
           <meta property="article:published_time" content={meta.date} />
         )}
       </Head>
-      <Navbar />
+      <Navbar data={navbar} />
       <main id="skip" className="flex flex-col content-center">
         {children}
       </main>

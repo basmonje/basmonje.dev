@@ -23,17 +23,16 @@ const NavItem = ({ href, text }) => {
   );
 };
 
-const NavDarkTheme = () => {
+const NavDarkTheme = ({ ariaLabel }) => {
   const [mounted, setMounted] = useState(false);
   const { resolvedTheme, setTheme } = useTheme();
 
   useEffect(() => setMounted(true), []);
 
   return (
-    <div>
+    <div className="flex items-center">
       <button
-        title="Toggle theme"
-        aria-label="Toggle dark and light theme"
+        aria-label={ariaLabel}
         className="button-icon-square bg-transparent button p-3 text-button radius-2 bg-hover-black-50 dark-bg-hover-white-50 outline-primary-400"
         onClick={() => setTheme(resolvedTheme === "dark" ? "light" : "dark")}
       >
@@ -51,11 +50,11 @@ const NavDarkTheme = () => {
   );
 };
 
-const Navbar = () => (
+const Navbar = ({ data }) => (
   <header className="px-5">
     <nav className="container container-sm flex flex-row items-center content-between py-5 px-5">
       <NavItem href="/" text="basmonje." />
-      <NavDarkTheme />
+      <NavDarkTheme ariaLabel={data.button} />
     </nav>
   </header>
 );

@@ -72,7 +72,7 @@ const Footer = ({ data }) => (
           className="decoration-none color-black-700 dark-color-white-600 dark-color-hover-white-800 color-hover-black-900"
           target="_blank"
           rel="noopener noreferrer"
-          href="https://github.com/basmonje/css"
+          href="https://css.basmonje.dev"
         >
           @basmonje/css
         </a>
