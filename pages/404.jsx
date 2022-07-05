@@ -15,8 +15,11 @@ export default function NotFound() {
           <h1>{data.notFound.title}</h1>
           <div>
             <NextLink href="/">
-              <a className="color-black-800 dark-color-white-800 outline-primary-400">
-                {data.notFound.button}
+              <a
+                role="navigation"
+                className="color-black-800 dark-color-white-800 outline-primary-400"
+              >
+                {data.notFound.link}
               </a>
             </NextLink>
           </div>

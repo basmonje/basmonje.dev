@@ -12,7 +12,7 @@ const HomePage = () => {
   const data = locale === "en-US" ? enUS : esES;
 
   return (
-    <Container title="Bastián Monje">
+    <Container title="Bastián Monje" navbar={data.navbar}>
       <Welcome data={data.header} />
       <Projects data={data.projects} />
       <Footer data={data.footer} />
