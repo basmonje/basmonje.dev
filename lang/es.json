@@ -10,12 +10,24 @@
     "title": "Proyectos",
     "data": [
       {
-        "id": 3,
-        "title": "Framework SCSS",
-        "summary": "Ligero y fácil de utilizar",
-        "publishedAt": "2022/04/19",
+        "id": 4,
+        "title": "Docs @basmonje/css",
+        "summary": "Documentación de librería de estilos",
+        "ariaLabel": "Abrir documentación de estilos en una nueva pestaña",
+        "publishedAt": "2022/07/05",
         "urls": {
           "demo": null,
+          "code": "https://css.basmonje.dev/"
+        }
+      },
+      {
+        "id": 3,
+        "title": "@basmonje/css",
+        "summary": "Librería de estilos con fines educativos",
+        "ariaLabel": "Abrir repositorio de libreria de estilos en nueva pestaña",
+        "publishedAt": "2022/04/19",
+        "urls": {
+          "demo": "https://www.npmjs.com/package/@basmonje/css",
           "code": "https://github.com/basmonje/css"
         }
       },
@@ -23,6 +35,7 @@
         "id": 2,
         "title": "Replach",
         "summary": "Evaluación Final de curso de React Developer",
+        "ariaLabel": "Abrir proyecto Replach en nueva pestaña",
         "publishedAt": "2022/03/10",
         "urls": {
           "demo": "https://replach.vercel.app/",
@@ -33,6 +46,7 @@
         "id": 1,
         "title": "Shopping Vanilla",
         "summary": "Evaluación Final de Curso Javascript Master",
+        "ariaLabel": "Abrir proyecto Carrito de compras en nueva pestaña",
         "publishedAt": "2021/11/13",
         "urls": {
           "demo": "https://basmonje.github.io/shopping_escalab/",
@@ -53,6 +67,9 @@
   },
   "notFound": {
     "title": "404 - No hemos encontrado lo que buscas.",
-    "button": "Volver al inicio"
+    "link": "Volver al inicio"
+  },
+  "navbar": {
+    "button": "Alternar temas"
   }
 }
